@@ -1,5 +1,5 @@
-import '../src/x-snc-mycomponent';
-import {TASK_LIST} from '../src/x-snc-mycomponent/sample_data';
+import '../src/x-snc-milestone';
+import {TASK_LIST} from '../src/x-snc-milestone/sample_data';
 
 
 const el = document.createElement('DIV');
@@ -28,12 +28,12 @@ console.log(items_obj);
 const items_str2 = JSON.stringify(items_obj);
 console.log(items_str2);
 
-//el.innerHTML = `<x-snc-mycomponent items="[]"></x-snc-mycomponent>`;     // Passing Empty:  WORKS
-//el.innerHTML = `<x-snc-mycomponent items=${items}></x-snc-mycomponent>`;   // Passing object: Fails expected to be type array but received string.
-//el.innerHTML = `<x-snc-mycomponent items=${items_str1}></x-snc-mycomponent>`;// Passsing a string: OK
+//el.innerHTML = `<x-snc-milestone items="[]"></x-snc-milestone>`;     // Passing Empty:  WORKS
+//el.innerHTML = `<x-snc-milestone items=${items}></x-snc-milestone>`;   // Passing object: Fails expected to be type array but received string.
+//el.innerHTML = `<x-snc-milestone items=${items_str1}></x-snc-milestone>`;// Passsing a string: OK
 
 
-el.innerHTML = `<x-snc-mycomponent items=${items_str1}></x-snc-mycomponent>`;// Passsing a string: OK
+el.innerHTML = `<x-snc-milestone items=${items_str1}></x-snc-milestone>`;// Passsing a string: OK
 
 
 

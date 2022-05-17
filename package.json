@@ -1,12 +1,12 @@
 {
-	"name": "@marc/x-snc-mycomponent",
+	"name": "@marc/x-snc-milestone",
 	"version": "0.0.1",
 	"private": false,
-	"description": "Does what a component got to do",
+	"description": "Milestone component",
 	"keywords": [
-		"ServiceNow",
-		"Now Experience UI Component",
-		"My component special power"
+		"Milestone",
+		"Progress",
+		"Task"
 	],
 	"readme": "./README.md",
 	"engines": {

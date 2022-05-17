@@ -1,10 +1,11 @@
 {
+	"scopeName": "x_snc_milestone",
 	"components": {
-		"x-snc-mycomponent": {
+		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
 				"associatedTypes": ["global.core", "global.landing-page"],
-				"description": "Component Template",
+				"description": "Milestone Component",
 				"category": "Component",
 				"icon": "document-outline",
 				"label": "Component Template"
@@ -19,6 +20,5 @@
 				"defaultValue": "[{\"Id\":1,\"description\":\"Jane\"},{\"Id\":2,\"description\":\"John\"}]"
 			}]
 		}
-	},
-	"scopeName": "x_snc_mycomponent"
+	}
 }
