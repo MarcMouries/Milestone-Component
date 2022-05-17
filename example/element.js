@@ -13,19 +13,14 @@ const items = [
 ];
 
 console.log(items);
-let items_str1 = JSON.stringify(items);
+
+const items_str1 = `[{\"id\":\"1\",\"description\":\"Submission\"},{\"id\":2,\"description\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"description\":\"Fulfillment\"},{\"id\":4,\"description\":\"Validation\"}]`;
+const items_str2 = [{'id':'received','description':'New Lead'},{'id':'investigation','description':'Under Investigation'},{'id':'review','description':'Review'},{'id':'resolved','description':'Case Resolved'}];
+
+console.log("items_str1");
 console.log(items_str1);
 
-items_str1 = `[{\"id\":\"1\",\"description\":\"Lead\"},{\"id\":2,\"description\":\"Investigation\"}]`
-console.log(items_str1);
-
-
-
-const items_str = "[{\"id\":1,\"description\":\"Jane\"},{\"id\":2,\"description\":\"John\"}]"
-console.log(items_str);
-const items_obj = JSON.parse(items_str);
-console.log(items_obj);
-const items_str2 = JSON.stringify(items_obj);
+console.log("items_str2");
 console.log(items_str2);
 
 //el.innerHTML = `<x-snc-milestone items="[]"></x-snc-milestone>`;     // Passing Empty:  WORKS

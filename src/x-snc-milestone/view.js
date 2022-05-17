@@ -10,18 +10,13 @@ export default (state, { dispatch }) => {
 	const { properties } = state;
 
 	return (
-		<div className="mycomponent">
-			<section className="glass">
-				<div className="cards">
-				<h1>Data provided</h1>
+		<div className="container">
+			<ul className="milestone-tracker">
 				{
-						properties.items.map((item, index) => (
-							<div className="card">
-							    <h2>{item.id} - {item.description}</h2>
-							</div>
-						))
-					}
-				</div>
-			</section>
-		</div >)
+					properties.items.map((item, index) => (
+						<li className={`milestone ${item.status == 'current' ? "current" : ""}`}><a href="">{item.id} - {item.description}</a></li>
+					))
+				}
+				</ul>
+			</div>)
 };
