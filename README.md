@@ -1,6 +1,6 @@
-# now-component-template
+# milestone-tracker-component
 
-Template to create a Now Experience Component
+Milestone tracker component for the Now Experience
 
 ## Features
 
