@@ -58,9 +58,14 @@ Milestone tracker component for the Now Experience
 
 
 
-## Notes
+## Troubleshooting
 Encountered an error : "Uncaught ReferenceError: process is not defined." 
 Fixed it by adding react-error-overlay with the following command:
 ```
 npm i -D react-error-overlay@6.0.9
 ```
+
+. If you see an error "Instance version "Sandiego" unsupported." Run the following command
+    ```
+    snc extension update --name ui-component
+    ```
