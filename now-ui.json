@@ -11,13 +11,13 @@
 				"label": "Component Template"
 			},
 			"properties": [{
-				"description": "Array of items to display",
+				"description": "Array of items to display as milestone",
 				"fieldType": "json",
 				"label": "items",
 				"name": "items",
 				"readOnly": false,
 				"required": true,
-				"defaultValue": "[{\"Id\":1,\"description\":\"Jane\"},{\"Id\":2,\"description\":\"John\"}]"
+				"defaultValue": "[{\"Id\":1,\"label\":\"Jane\"},{\"Id\":2,\"label\":\"John\"}]"
 			}]
 		}
 	}
