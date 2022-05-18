@@ -1,5 +1,9 @@
 {
 	"name": "@marc/x-snc-milestone",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MarcMouries/Milestone-Component.git"
+	  },
 	"version": "0.0.1",
 	"private": false,
 	"description": "Milestone component",
@@ -8,6 +12,7 @@
 		"Progress",
 		"Task"
 	],
+	"license": "For ServiceNow use",
 	"readme": "./README.md",
 	"engines": {
 		"node": ">=8.6.0",
@@ -21,7 +26,8 @@
 		"@servicenow/sass-kit": "rome",
 		"@servicenow/sass-theme": "rome",
 		"@servicenow/ui-core": "rome",
-		"@servicenow/ui-renderer-snabbdom": "rome"
+		"@servicenow/ui-renderer-snabbdom": "rome",
+		"yo": "^4.3.0"
 	},
 	"devDependencies": {
 		"@servicenow/cli-archetype-dev": "rome",
