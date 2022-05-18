@@ -3,7 +3,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/MarcMouries/Milestone-Component.git"
-	  },
+	},
 	"version": "0.0.1",
 	"private": false,
 	"description": "Milestone component",
@@ -20,18 +20,16 @@
 	},
 	"module": "src/index.js",
 	"dependencies": {
-		"@servicenow/cli-archetype": "rome",
-		"@servicenow/cli-component-archetype": "rome",
-		"@servicenow/library-translate": "rome",
-		"@servicenow/sass-kit": "rome",
-		"@servicenow/sass-theme": "rome",
-		"@servicenow/ui-core": "rome",
-		"@servicenow/ui-renderer-snabbdom": "rome",
-		"yo": "^4.3.0"
+		"@servicenow/ui-core": "quebec",
+		"@servicenow/ui-renderer-snabbdom": "quebec",
+		"@servicenow/cli-archetype": "21.0.7",
+		"@servicenow/cli-component-archetype": "21.0.7",
+		"@servicenow/sass-theme": "quebec",
+		"@servicenow/sass-kit": "quebec",
+		"@servicenow/library-translate": "quebec"
 	},
 	"devDependencies": {
-		"@servicenow/cli-archetype-dev": "rome",
-		"@servicenow/cli-component-archetype-dev": "rome",
-		"react-error-overlay": "^6.0.9"
+		"@servicenow/cli-archetype-dev": "21.0.7",
+		"@servicenow/cli-component-archetype-dev": "21.0.7"
 	}
 }
