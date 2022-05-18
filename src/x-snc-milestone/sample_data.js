@@ -1,5 +1,6 @@
-export const TASK_LIST = [
-{"id": 0, "description": 'ToDo' },
-{"id": 1, "description": 'Work in Progress'},
-{"id": 2, "description": 'Done' }
-];
+export const STEP_LIST = [
+    { "id": 1, "label": "Submission" }, 
+    { "id": 2, "label": "Triage", "status": "current" }, 
+    { "id": 3, "label": "Fulfillment" },
+    { "id": 4, "label": "Validation" }
+]
