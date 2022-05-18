@@ -25,14 +25,15 @@ const items_OLD = [
 ];
 
 const items = [
-    {id: 'step1', label: 'Not started', progress: 'none'},
+   {id: 'step1', label: 'Not started', progress: 'none'},
    {id: 'step2', label: 'Active', progress: 'partial'},
    {id: 'step3', label: 'In progress', progress: 'partial'},
    {id: 'step4', label: 'Complete', progress: 'done'}
    ];
+   
 
-console.log(TASK_LIST);
 console.log("TASK_LIST");
+console.log(TASK_LIST);
 
 console.log("items");
 console.log(items);
@@ -51,6 +52,7 @@ console.log(items_str2);
 //el.innerHTML = `<x-snc-milestone items=${items_str1}></x-snc-milestone>`;// Passsing a string: OK
 
 
-el.innerHTML = `<x-snc-milestone items=${items_str1}></x-snc-milestone>`;// Passsing a string: OK
+//el.innerHTML = `<x-snc-milestone items=${items_str1}></x-snc-milestone>`;// Passsing a string: OK
+el.innerHTML = `<x-snc-milestone></x-snc-milestone>`;// Passsing a string: OK
 
 
