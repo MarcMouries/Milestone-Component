@@ -14,7 +14,7 @@ export default (state, { dispatch }) => {
 			<ul className="milestone-tracker">
 				{
 					properties.items.map((item, index) => (
-						<li className={`milestone ${item.status == 'current' ? "current" : ""}`}><a href="">{item.id} - {item.description}</a></li>
+						<li className={`milestone ${item.status == 'current' ? "current" : ""}`}><a href="">{item.id} - {item.label}</a></li>
 					))
 				}
 				</ul>

@@ -4,20 +4,53 @@
 		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
-				"associatedTypes": ["global.core", "global.landing-page"],
+				"associatedTypes": ["global.core"],
 				"description": "Milestone Component",
-				"category": "Component",
+				"category": "primitives",
 				"icon": "document-outline",
-				"label": "Component Template"
+				"label": "Milestone Tracker"
 			},
 			"properties": [{
-				"description": "Array of items to display",
+				"description": "Array of items to display as milestone",
 				"fieldType": "json",
 				"label": "items",
 				"name": "items",
 				"readOnly": false,
 				"required": true,
-				"defaultValue": "[{\"Id\":1,\"description\":\"Jane\"},{\"Id\":2,\"description\":\"John\"}]"
+				"defaultValue": "[{\"id\":\"1\",\"label\":\"Submission\"},{\"id\":2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"label\":\"Fulfillment\"},{\"id\":4,\"label\":\"Validation\"}]",
+				"typeMetadata": {
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": [
+										"string",
+										"number"
+									]
+								},
+								"label": {
+									"type": "string",
+									"translatable": true
+								},
+								"icon": {
+									"type": "string"
+								},
+								"sublabel": {
+									"type": "string",
+									"translatable": true
+								},
+								"status": {
+									"type": "string",
+									"enum": [
+										"current"
+									]
+								}
+							}
+						}
+					}
+				}
 			}]
 		}
 	}
