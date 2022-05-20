@@ -17,7 +17,7 @@
 				"name": "items",
 				"readOnly": false,
 				"required": true,
-				"defaultValue": "[{\"id\":\"1\",\"label\":\"Submission\"},{\"id\":2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"label\":\"Fulfillment\"},{\"id\":4,\"label\":\"Validation\"}]",
+				"defaultValue": "[{\"id\":\"1\",\"label\":\"Submission\",\"status\":\"current\"},{\"id\":2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"label\":\"Fulfillment\"},{\"id\":4,\"label\":\"Validation\"}]",
 				"typeMetadata": {
 					"schema": {
 						"type": "array",
@@ -44,7 +44,7 @@
 								"status": {
 									"type": "string",
 									"enum": [
-										"current"
+										"current", "completed"
 									]
 								}
 							}
