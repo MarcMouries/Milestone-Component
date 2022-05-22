@@ -3,6 +3,8 @@
 target/
 .now-cli/
 
+.babelrc
+
 # Logs
 logs
 *.log
