@@ -8,6 +8,12 @@ export default (state, { dispatch }) => {
 
 	*/
 	const { properties } = state;
+	console.log("properties.current=" + properties.current);
+	console.log(properties.items);
+	const currentIndex = properties.items.findIndex(step => step.label === properties.current);
+	console.log("currentIndex=" + currentIndex);
+
+
 
 	return (
 		<div className="container">
