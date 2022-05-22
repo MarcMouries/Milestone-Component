@@ -14,6 +14,9 @@ style.innerHTML = `
         padding: 10px;
         background: whitesmoke;
     }
+    .container {
+        background: white;
+    }
 `;
 
 const items_OLD = [
