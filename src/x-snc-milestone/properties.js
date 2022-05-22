@@ -5,6 +5,11 @@ export default {
 		items: {
 			required: true,
 			schema: {type: 'array'},
-			default: DEFAULT_STEP_LIST,
+			default: DEFAULT_STEP_LIST
+		},
+		current: {
+			required: true,
+			schema: {type: 'string'},
+			default: "Triage"
 		}
 	}
