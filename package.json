@@ -23,6 +23,7 @@
 		"@servicenow/cli-archetype": "21.0.7",
 		"@servicenow/cli-component-archetype": "21.0.7",
 		"@servicenow/library-translate": "quebec",
+		"@servicenow/now-popover": "20.2.11",
 		"@servicenow/sass-kit": "quebec",
 		"@servicenow/sass-theme": "quebec",
 		"@servicenow/ui-core": "quebec",
