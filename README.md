@@ -2,10 +2,7 @@
 
 Milestone tracker component for the Now Experience
 
-## Features
-
-- shows how to pass data for sample data
-- shows how to style
+![Preview of Milestone tracker](./doc/milestone-tracker.png)
 
 ## Prerequisites
 1. Install Node version 12.16
