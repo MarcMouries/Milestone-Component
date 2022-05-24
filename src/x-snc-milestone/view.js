@@ -1,6 +1,5 @@
 
 
-
 export default (state, { dispatch }) => {
 
 	/* 
@@ -18,21 +17,27 @@ export default (state, { dispatch }) => {
 
 
 	function getClassName(itemIndex) {
-        if(itemIndex === currentIndex) return 'milestone current';
-        if(itemIndex < currentIndex) return 'milestone complete';
-        return 'milestone'
-    }
+		if (itemIndex === currentIndex) return 'milestone current';
+		if (itemIndex < currentIndex) return 'milestone complete';
+		return 'milestone'
+	}
 
 	return (
 		<div className="container">
 			<ul className="milestone-tracker">
 				{
-					properties.items.map((item, index) => (
+					properties.items.map((milestone, index) => (
 						/*<li className={`milestone ${item.status == 'current' ? "current" : ""}`}><a href="">{item.id} - {item.label}</a></li>*/
 						/*<li className={getClassName(index)}><a href="">{item.id} - {item.label}</a></li>*/
-						<li className={getClassName(index)}><a href="">{item.label}</a></li>
+						<li className={getClassName(index)}>
+							<a href="">{milestone.label}</a>
+							<now-popover interaction-type="none" positions={[{ "target": "bottom-center", "content": "top-center" }]}>
+								<now-button-bare slot="trigger" icon-start="ellipsis-v-outline" />
+								<milestone-content slot="content" milestone={milestone.label}/>
+							</now-popover>
+						</li>
 					))
 				}
-				</ul>
-			</div>)
+			</ul>
+		</div>)
 };
