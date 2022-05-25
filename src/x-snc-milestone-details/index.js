@@ -1,4 +1,5 @@
 import { createCustomElement } from '@servicenow/ui-core';
+import styles from './styles.scss';
 
 createCustomElement('milestone-details', {
 	view: (state) => 
@@ -7,7 +8,7 @@ createCustomElement('milestone-details', {
 				<p>TBD</p>
 			</div>
 	,
-	styles: "* {margin: 10px}  .milestone-details {display: flex; flex-direction: column;}",
+	styles,
 	properties: {
 		milestone: {}
 	}
