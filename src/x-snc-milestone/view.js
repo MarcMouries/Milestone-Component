@@ -33,7 +33,7 @@ export default (state, { dispatch }) => {
 							<a href="">{milestone.label}</a>
 							<now-popover interaction-type="none" positions={[{ "target": "bottom-center", "content": "top-center" }]}>
 								<now-button-bare slot="trigger" icon-start="ellipsis-v-outline" />
-								<milestone-content slot="content" milestone={milestone.label}/>
+								<milestone-details slot="content" milestone={milestone.label}/>
 							</now-popover>
 						</li>
 					))

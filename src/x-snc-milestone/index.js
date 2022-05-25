@@ -7,18 +7,8 @@ import styles from './styles.scss';
 import view from './view';
 import properties from './properties'
 
-createCustomElement('milestone-content', {
-	view: (state) => 
-			<form>
-				<h5>Details about {state.properties.milestone}</h5>
-				
-			</form>
-	,
-	styles: "* {margin: 10px}",
-	properties: {
-		milestone: {}
-	}
-});
+import '../x-snc-milestone-details';
+
 
 createCustomElement('x-snc-milestone', {
 	renderer: { type: snabbdom },
