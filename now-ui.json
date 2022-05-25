@@ -47,9 +47,18 @@
 					"readOnly": false,
 					"required": true,
 					"defaultValue": "Triage"
+				},
+				{
+					"description": "Case Table",
+					"fieldType": "table_name",
+					"label": "table",
+					"name": "table",
+					"readOnly": false,
+					"required": true,
+					"defaultValue": "",
+					"typeMetadata": {}
 				}
 			]
 		}
-	},
-	"x-snc-milestone-details": {}
+	}
 }
