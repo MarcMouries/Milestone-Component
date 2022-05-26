@@ -1,10 +1,5 @@
 @import "@servicenow/sass-kit/host";
-
-$milestone-tracker-background: white;
-$milestone-background: #eeeeee;
-$milestone-text-color: dimgrey;
-$milestone-current-color: #45ae72; /* ServiceNow #99db76; */
-$milestone-complete-color: mix(white, $milestone-current-color, 30);
+@import 'theme';
 
 .milestone-tracker {
 	width: 100%;
