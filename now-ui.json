@@ -1,14 +1,20 @@
 {
+	"sysAppProperties": {
+		"name": "Milestone Tracker Component",
+		"licensable": "true",
+		"vendor": "ServiceNow",
+		"vendor_prefix": "sn"
+	},
 	"scopeName": "x_snc_milestone",
 	"components": {
 		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
-				"associatedTypes": ["global.core"],
+				"label": "Milestone Tracker",
 				"description": "Milestone Component",
+				"associatedTypes": ["global.core"],
 				"category": "primitives",
-				"icon": "document-outline",
-				"label": "Milestone Tracker"
+				"icon": "stepper"
 			},
 			"properties": [{
 					"description": "Array of items to display as milestone",
@@ -40,23 +46,13 @@
 					}
 				},
 				{
-					"description": "Array of items to display as milestone",
-					"fieldType": "string",
-					"label": "current",
-					"name": "current",
-					"readOnly": false,
-					"required": true,
-					"defaultValue": "Triage"
-				},
-				{
-					"description": "Case Table",
-					"fieldType": "table_name",
-					"label": "table",
-					"name": "table",
-					"readOnly": false,
-					"required": true,
-					"defaultValue": "",
-					"typeMetadata": {}
+					"name": "Case",
+					"label": "Case",
+					"description": "The Case that the Milestone Tracker should use",
+					"fieldType": "reference",
+					"typeMetadata": {
+						"reference": "sn_niem_case"
+					}
 				}
 			]
 		}
