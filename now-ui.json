@@ -1,57 +1,60 @@
 {
+	"sysAppProperties": {
+		"name": "Milestone Tracker Component",
+		"licensable": "true",
+		"vendor": "ServiceNow",
+		"vendor_prefix": "sn"
+	},
 	"scopeName": "x_snc_milestone",
 	"components": {
 		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
-				"associatedTypes": ["global.core"],
+				"label": "Milestone Tracker",
 				"description": "Milestone Component",
+				"associatedTypes": ["global.core"],
 				"category": "primitives",
-				"icon": "document-outline",
-				"label": "Milestone Tracker"
+				"icon": "stepper"
 			},
 			"properties": [{
-				"description": "Array of items to display as milestone",
-				"fieldType": "json",
-				"label": "items",
-				"name": "items",
-				"readOnly": false,
-				"required": true,
-				"defaultValue": "[{\"id\":\"1\",\"label\":\"Submission\"},{\"id\":2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"label\":\"Fulfillment\"},{\"id\":4,\"label\":\"Validation\"}]",
-				"typeMetadata": {
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": [
-										"string",
-										"number"
-									]
-								},
-								"label": {
-									"type": "string",
-									"translatable": true
-								},
-								"icon": {
-									"type": "string"
-								},
-								"sublabel": {
-									"type": "string",
-									"translatable": true
-								},
-								"status": {
-									"type": "string",
-									"enum": [
-										"current"
-									]
+					"description": "Array of items to display as milestone",
+					"fieldType": "json",
+					"label": "items",
+					"name": "items",
+					"readOnly": false,
+					"required": true,
+					"defaultValue": "[{\"id\":\"1\",\"label\":\"Submission\"},{\"id\":2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"label\":\"Fulfillment\"},{\"id\":4,\"label\":\"Validation\"}]",
+					"typeMetadata": {
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": [
+											"string",
+											"number"
+										]
+									},
+									"label": {
+										"type": "string",
+										"translatable": true
+									}
 								}
 							}
 						}
 					}
+				},
+				{
+					"name": "Case",
+					"label": "Case",
+					"description": "The Case that the Milestone Tracker should use",
+					"fieldType": "reference",
+					"typeMetadata": {
+						"reference": "sn_niem_case"
+					}
 				}
-			}]
+			]
 		}
 	}
 }

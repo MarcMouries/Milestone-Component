@@ -1,0 +1,14 @@
+@import "@servicenow/sass-kit/host";
+
+
+* {
+    margin: 5px
+}
+
+.milestone-details {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--now-font-family, "Source Sans Pro", sans-serif);
+    color:  dimgrey;
+    text-transform: uppercase;
+}
