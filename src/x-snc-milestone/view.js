@@ -1,5 +1,3 @@
-
-
 export default (state, { dispatch }) => {
 
 	/* 
@@ -15,11 +13,14 @@ export default (state, { dispatch }) => {
 	const currentIndex = properties.items.findIndex(step => step.label === properties.current);
 	console.log("currentIndex=" + currentIndex);
 
-
 	function getClassName(itemIndex) {
 		if (itemIndex === currentIndex) return 'milestone current';
 		if (itemIndex < currentIndex) return 'milestone complete';
 		return 'milestone'
+	}
+
+	if (false) {
+		return (		<div className="container">	RIEN A VOIR	</div>)
 	}
 
 	return (
@@ -32,7 +33,7 @@ export default (state, { dispatch }) => {
 						<li className={getClassName(index)}>
 							<a href="">{milestone.label}</a>
 							<now-popover interaction-type="none" positions={[{ "target": "bottom-center", "content": "top-center" }]}>
-								<now-button-bare slot="trigger" icon-start="ellipsis-v-outline" />
+								<now-button-bare slot="trigger" icon-start="ellipsis-v-outline" className="pop-icon"/>
 								<milestone-details slot="content" milestone={milestone.label}/>
 							</now-popover>
 						</li>
