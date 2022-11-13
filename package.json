@@ -20,18 +20,18 @@
 	},
 	"module": "src/index.js",
 	"dependencies": {
-		"@servicenow/cli-archetype": "21.0.7",
-		"@servicenow/cli-component-archetype": "21.0.7",
-		"@servicenow/library-translate": "rome",
-		"@servicenow/now-popover": "rome",
-		"@servicenow/now-button": "rome",
-		"@servicenow/sass-kit": "rome",
-		"@servicenow/sass-theme": "rome",
-		"@servicenow/ui-core": "rome",
-		"@servicenow/ui-renderer-snabbdom": "rome"
+		"@servicenow/cli-archetype": "latest",
+		"@servicenow/cli-component-archetype": "latest",
+		"@servicenow/library-translate": "latest",
+		"@servicenow/now-popover": "latest",
+		"@servicenow/now-button": "latest",
+		"@servicenow/sass-kit": "latest",
+		"@servicenow/sass-theme": "latest",
+		"@servicenow/ui-core": "latest",
+		"@servicenow/ui-renderer-snabbdom": "latest"
 	},
 	"devDependencies": {
-		"@servicenow/cli-archetype-dev": "21.0.7",
-		"@servicenow/cli-component-archetype-dev": "21.0.7"
+		"@servicenow/cli-archetype-dev": "latest",
+		"@servicenow/cli-component-archetype-dev": "latest"
 	}
 }
