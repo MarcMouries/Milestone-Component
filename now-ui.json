@@ -3,7 +3,7 @@
 		"name": "Milestone Tracker Component",
 		"licensable": "true",
 		"vendor": "ServiceNow",
-		"vendor_prefix": "sn"
+		"vendor_prefix": "x_snc"
 	},
 	"scopeName": "x_snc_milestone",
 	"components": {
