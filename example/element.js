@@ -6,17 +6,8 @@ const el = document.createElement('DIV');
 document.body.appendChild(el);
 
 
-const style = document.createElement('style');
-document.head.appendChild(style);
-style.innerHTML = `
-    html, body {
-        margin: 10px;
-        padding: 10px;
-        background: white;
-    }
-    .container {
-        background: white;
-    }
+el.innerHTML = `
+    <div style="padding: 10px; border: solid">
+        <x-snc-milestone table="x_snc_uib_examples_example" sysid="b22fe03147a971105d6c8fd4f16d4328"></x-snc-milestone>
+    </div>
 `;
-
-el.innerHTML = `<x-snc-milestone></x-snc-milestone>`;

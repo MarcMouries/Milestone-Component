@@ -1,29 +1,24 @@
 {
-	"sysAppProperties": {
-		"name": "Milestone Tracker Component",
-		"licensable": "true",
-		"vendor": "ServiceNow",
-		"vendor_prefix": "x_snc"
-	},
 	"scopeName": "x_snc_milestone",
 	"components": {
 		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
-				"label": "Milestone Tracker",
-				"description": "Milestone Component",
-				"associatedTypes": ["global.core"],
+				"associatedTypes": ["global.core", "global.landing-page"],
 				"category": "primitives",
-				"icon": "stepper"
+				"description": "Milestone Component",
+				"icon": "stepper",
+				"label": "AES Milestone Tracker"
 			},
-			"properties": [{
+			"properties": [
+				{
 					"description": "Array of items to display as milestone",
 					"fieldType": "json",
 					"label": "items",
 					"name": "items",
 					"readOnly": false,
 					"required": true,
-					"defaultValue": "[{\"id\":\"1\",\"label\":\"Submission\"},{\"id\":2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\":3,\"label\":\"Fulfillment\"},{\"id\":4,\"label\":\"Validation\"}]",
+					"defaultValue": "[{\"id\": 1,\"label\":\"Submission\"},{\"id\" : 2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\": 3,\"label\":\"Fulfillment\"},{\"id\": 4,\"label\":\"Validation\"}]",
 					"typeMetadata": {
 						"schema": {
 							"type": "array",
@@ -31,10 +26,7 @@
 								"type": "object",
 								"properties": {
 									"id": {
-										"type": [
-											"string",
-											"number"
-										]
+										"type": "number"
 									},
 									"label": {
 										"type": "string",
@@ -46,14 +38,34 @@
 					}
 				},
 				{
-					"name": "Case",
-					"label": "Case",
-					"description": "The Case that the Milestone Tracker should use",
+					"name": "task",
+					"label": "Task",
+					"description": "The Task that the Milestone Tracker should use",
 					"fieldType": "reference",
 					"typeMetadata": {
-						"reference": "sn_niem_case"
+						"reference": "task"
 					}
-				}
+				},
+				{
+					"name": "table",
+					"label": "table",
+					"description": "The name of the table where the record is stored",
+					"readOnly": false,
+					"fieldType": "table_name",
+					"required": true,
+					"defaultValue": "task",
+					"typeMetadata": {}
+				  },
+				  {
+					"name": "sysId",
+					"label": "sysId",
+					"description": "The unique identifier for the record",
+					"readOnly": false,
+					"fieldType": "string",
+					"required": true,
+					"defaultValue": "",
+					"typeMetadata": {}
+				  }
 			]
 		}
 	}

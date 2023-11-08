@@ -1,12 +1,15 @@
 # milestone-tracker-component
 
-Milestone tracker component for the Now Experience
+Milestone tracker component for the Now Experience.
+
+- point to a table and a sysId
+
 
 ![Preview of Milestone tracker](./doc/milestone-tracker.png)
 
 ## Prerequisites
 1. Install Node version 12.16
-    * https://nodejs.org/ru/blog/release/v12.16.1/ 
+    * https://nodejs.org/ru/blog/release/v12.16.1/
     * It's the version supported by the ServiceNow CLI
 
 2. Install ServiceNow CLI
@@ -27,7 +30,7 @@ Milestone tracker component for the Now Experience
     snc ui-component login {instance_url} basic {user_name} {password}
     ```
 
-## Installation 
+## Installation
 
 1. Fork this repo into your GitHub account.
     * You can fork any repo by clicking the fork button in the upper right hand corner of a repo page.
@@ -39,13 +42,13 @@ Milestone tracker component for the Now Experience
     ```
     npm install
     ```
-3. Test the component locally 
+3. Test the component locally
     ```
     snc ui-component develop --open
     ```
 4. Deploy the component to a ServiceNow instance
-    ``` 
-    snc ui-component deploy --force 
+    ```
+    snc ui-component deploy --force
     ```
 5. Make edits to your local cloned copy of the repo on your computer
 

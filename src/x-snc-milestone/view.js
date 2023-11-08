@@ -1,17 +1,14 @@
 export default (state, { dispatch }) => {
-
-	/* 
-	deconstructing syntax 
-		const { properties } = state;
-	is equivalent to:
-		const properties     = state.properties;
-
-	*/
 	const { properties } = state;
-	console.log("properties.current=" + properties.current);
-	console.log(properties.items);
+    //console.log("Milestone Component: properties", properties);
+	//console.log("Milestone Component: state", state);
+	console.log("%c " + "Milestone Component", 'font-weight:bold');
+	console.log("%c " + "table  : " + properties.table, 'font-weight:italic');
+	console.log("%c " + "sysid  : " + properties.sysid, 'font-weight:italic');
+	console.log("%c " + "current: " + properties.current, 'font-weight:italic');
+
 	const currentIndex = properties.items.findIndex(step => step.label === properties.current);
-	console.log("currentIndex=" + currentIndex);
+	console.log("Milestone: currentIndex=" + currentIndex);
 
 	function getClassName(itemIndex) {
 		if (itemIndex === currentIndex) return 'milestone current';

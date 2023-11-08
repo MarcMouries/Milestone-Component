@@ -65,11 +65,9 @@
 }
 
 .milestone:hover {
-	color: red;
+	text-decoration: underline;
 }
-.now-button-bare.-primary {
-color: red;
-}
+
 
 .milestone.complete {
 	background: $milestone-complete-color;

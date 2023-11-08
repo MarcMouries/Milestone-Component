@@ -28,6 +28,7 @@
 		"@servicenow/sass-kit": "latest",
 		"@servicenow/sass-theme": "latest",
 		"@servicenow/ui-core": "latest",
+		"@servicenow/ui-effect-http": "latest",
 		"@servicenow/ui-renderer-snabbdom": "latest"
 	},
 	"devDependencies": {
