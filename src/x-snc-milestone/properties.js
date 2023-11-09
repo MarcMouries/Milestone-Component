@@ -14,7 +14,7 @@ export default {
   table: {
     default: "",
   },
-  sysid: {
+  sysId: {
     default: "",
   },
 };

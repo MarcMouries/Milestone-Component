@@ -8,6 +8,6 @@ document.body.appendChild(el);
 
 el.innerHTML = `
     <div style="padding: 10px; border: solid">
-        <x-snc-milestone table="x_snc_uib_examples_example" sysid="b22fe03147a971105d6c8fd4f16d4328"></x-snc-milestone>
+        <x-snc-milestone table="x_snc_uib_examples_order" sys-id="5489078f1b567510b00dddf6b04bcb02"></x-snc-milestone>
     </div>
 `;

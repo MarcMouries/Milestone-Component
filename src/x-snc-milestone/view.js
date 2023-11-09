@@ -1,11 +1,11 @@
 export default (state, { dispatch }) => {
 	const { properties } = state;
     //console.log("Milestone Component: properties", properties);
-	//console.log("Milestone Component: state", state);
+	console.log("Milestone Component: state", state);
 	console.log("%c " + "Milestone Component", 'font-weight:bold');
-	console.log("%c " + "table  : " + properties.table, 'font-weight:italic');
-	console.log("%c " + "sysid  : " + properties.sysid, 'font-weight:italic');
-	console.log("%c " + "current: " + properties.current, 'font-weight:italic');
+	console.log("%c " + " • table    : " + properties.table, 'font-weight:italic');
+	console.log("%c " + " • sysId    : " + properties.sysId, 'font-weight:italic');
+	console.log("%c " + " • isLoading: " + properties.isLoading, 'font-weight:italic');
 
 	const currentIndex = properties.items.findIndex(step => step.label === properties.current);
 	console.log("Milestone: currentIndex=" + currentIndex);
