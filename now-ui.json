@@ -4,7 +4,10 @@
 		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
-				"associatedTypes": ["global.core", "global.landing-page"],
+				"associatedTypes": [
+					"global.core",
+					"global.landing-page"
+				],
 				"category": "primitives",
 				"description": "Milestone Component",
 				"icon": "stepper",
@@ -12,39 +15,57 @@
 			},
 			"properties": [
 				{
-					"description": "Array of items to display as milestone",
-					"fieldType": "json",
-					"label": "items",
-					"name": "items",
+					"name": "mode",
+					"label": "Mode",
+					"description": "<strong>Mode of operation.</strong> The static data mode... . <br/> The record mode allows...",
+					"fieldType": "choice",
 					"readOnly": false,
-					"required": true,
-					"defaultValue": "[{\"id\": 1,\"label\":\"Submission\"},{\"id\" : 2,\"label\":\"Triage\",\"status\":\"current\"},{\"id\": 3,\"label\":\"Fulfillment\"},{\"id\": 4,\"label\":\"Validation\"}]",
+					"defaultValue": "STATIC",
+					"typeMetadata": {
+						"variant": "radio-group",
+						"choices": [
+							{
+								"label": "Static data",
+								"value": "STATIC"
+							},
+							{
+								"label": "Record",
+								"value": "RECORD"
+							}
+						]
+					}
+				},
+				{
+					"description": "List of stages to display",
+					"fieldType": "json",
+					"label": "Stages",
+					"name": "stages",
+					"readOnly": false,
+					"required": false,
+					"defaultValue": [
+						"Set",
+						"Your",
+						"Own",
+						"Stages"
+					],
 					"typeMetadata": {
 						"schema": {
 							"type": "array",
 							"items": {
-								"type": "object",
-								"properties": {
-									"id": {
-										"type": "number"
-									},
-									"label": {
-										"type": "string",
-										"translatable": true
-									}
-								}
+								"type": "string"
 							}
 						}
 					}
 				},
 				{
-					"name": "task",
-					"label": "Task",
-					"description": "The Task that the Milestone Tracker should use",
-					"fieldType": "reference",
-					"typeMetadata": {
-						"reference": "task"
-					}
+					"name": "currentStage",
+					"label": "Current stage",
+					"description": "The current stage of the record",
+					"readOnly": false,
+					"fieldType": "string",
+					"required": true,
+					"defaultValue": "",
+					"typeMetadata": {}
 				},
 				{
 					"name": "table",
@@ -55,8 +76,8 @@
 					"required": true,
 					"defaultValue": "task",
 					"typeMetadata": {}
-				  },
-				  {
+				},
+				{
 					"name": "sysId",
 					"label": "sysId",
 					"description": "The unique identifier for the record",
@@ -65,7 +86,7 @@
 					"required": true,
 					"defaultValue": "",
 					"typeMetadata": {}
-				  }
+				}
 			]
 		}
 	}
