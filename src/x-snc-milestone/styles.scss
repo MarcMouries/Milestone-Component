@@ -1,9 +1,9 @@
 @import "@servicenow/sass-kit/host";
 @import 'theme';
 
-.milestone-tracker {
+.stage-tracker {
 	width: 100%;
-	background: $milestone-tracker-background;
+	background: $stage-tracker-background;
 	margin: 0;
 	counter-reset: step;
 	list-style-type: none;
@@ -18,21 +18,21 @@
     color: red;
 }
 
-.milestone {
+.stage {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background: $milestone-background;
-	color: $milestone-text-color;
+	background: $stage-background;
+	color: $stage-text-color;
 	font-family: inherit;
 	font-size: inherit;
 	height: calc(2rem);
 }
-.milestone:not(:first-child) {
+.stage:not(:first-child) {
 	margin-left: -6px;
 }
-.milestone:first-child {
+.stage:first-child {
 	clip-path: polygon(
 		0 0,
 		calc(100% - 10px) 0,
@@ -42,7 +42,7 @@
 		0px 50%
 	);
 }
-.milestone:not(:first-child):not(:last-child) {
+.stage:not(:first-child):not(:last-child) {
 	clip-path: polygon(
 		0 0,
 		calc(100% - 10px) 0,
@@ -52,41 +52,48 @@
 		10px 50%
 	);
 }
-.milestone:last-child {
+.stage:last-child {
 	clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 10px 50%, 0% 0%);
 }
 
-.milestone a {
+.stage a {
 	text-decoration: none;
 	color: inherit;
-	font-size: 11px;
+	font-size: 0.8rem;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
-.milestone:hover {
+.stage:hover {
 	text-decoration: underline;
 }
 
 
-.milestone.complete {
-	background: $milestone-complete-color;
+.stage.complete {
+	background: $stage-complete-color;
 	color: #eee;
 }
 
-.milestone.current {
+.stage.current {
 	font-weight: bold;
-	background: $milestone-current-color;
+	background: $stage-current-color;
 	color: #eee;
 }
-.milestone:before {
+.stage:before {
 	font-weight: bolder;
 	margin-right: 3px;
 }
 
-.milestone.complete:before {
+.stage.complete:before {
 	content: "✓";
 }
-.milestone.current:before {
+.stage.current:before {
 	content: "☉";
+}
+
+.error {
+	border: solid 1px red;
+    margin: 5px;
+    padding: 10px;
+    background: lightcoral;
 }

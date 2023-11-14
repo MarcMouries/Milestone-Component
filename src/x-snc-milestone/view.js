@@ -1,41 +1,48 @@
-export default (state, { dispatch }) => {
-	const { properties } = state;
-    //console.log("Milestone Component: properties", properties);
-	console.log("Milestone Component: state", state);
-	console.log("%c " + "Milestone Component", 'font-weight:bold');
-	console.log("%c " + " • table    : " + properties.table, 'font-weight:italic');
-	console.log("%c " + " • sysId    : " + properties.sysId, 'font-weight:italic');
-	console.log("%c " + " • isLoading: " + properties.isLoading, 'font-weight:italic');
+export default (state) => {
+  console.log("%c " + "View Milestone Component", "font-weight:bold");
+  const { currentStage, stages } = state;
+  console.log("Milestone Component: state", state);
+ // console.log("%c " + " • table    : " + properties.table, "font-style:italic");
+ // console.log("%c " + " • sysId    : " + properties.sysId, "font-style:italic");
+  console.log("%c " + " • isLoading: " + state.isLoading, "font-style:italic");
+ // console.log("%c " + " • stages   : " + JSON.stringify(properties.stages), "font-style:italic");
+ //console.log("%c " + " • stages   : " + JSON.stringify(stages), "font-style:italic");
+ console.log("%c " + " • stages   : " + stages, "font-style:italic");
+ console.log("%c " + " • current  : " + currentStage, "font-style:italic");
 
-	const currentIndex = properties.items.findIndex(step => step.label === properties.current);
-	console.log("Milestone: currentIndex=" + currentIndex);
+  const currentIndex = stages.findIndex((stage) => stage === currentStage);
 
-	function getClassName(itemIndex) {
-		if (itemIndex === currentIndex) return 'milestone current';
-		if (itemIndex < currentIndex) return 'milestone complete';
-		return 'milestone'
-	}
-
-	if (false) {
-		return (		<div className="container">	RIEN A VOIR	</div>)
-	}
-
-	return (
-		<div className="container">
-			<ul className="milestone-tracker">
-				{
-					properties.items.map((milestone, index) => (
-						/*<li className={`milestone ${item.status == 'current' ? "current" : ""}`}><a href="">{item.id} - {item.label}</a></li>*/
-						/*<li className={getClassName(index)}><a href="">{item.id} - {item.label}</a></li>*/
+  return (
+    <div className="container">
+      <ul className="stage-tracker">
+        {stages.map((stage, index) => (
+          <li className={getClassName(index)}><a href="#">{stage}</a>
+          </li>
+          /*
 						<li className={getClassName(index)}>
-							<a href="">{milestone.label}</a>
-							<now-popover interaction-type="none" positions={[{ "target": "bottom-center", "content": "top-center" }]}>
+							<a href="">{stage.label}</a>
+							<now-popover interaction-type="none"
+								 positions={[{ "target": "bottom-center", "content": "top-center" }]}>
 								<now-button-bare slot="trigger" icon-start="ellipsis-v-outline" className="pop-icon"/>
-								<milestone-details slot="content" milestone={milestone.label}/>
+								<stage-details slot="content" stage={stage.label}/>
 							</now-popover>
 						</li>
-					))
-				}
-			</ul>
-		</div>)
+						 */
+        ))}
+      </ul>
+      {state.hasError && <div className="error">{state.errorMessage}</div>}
+    </div>
+  );
+
+  /**
+   *  Helper function to determine the CSS class for a stage.
+   */
+  function getClassName(stageIndex) {
+    if (stageIndex === currentIndex) {
+      return "stage current";
+    } else if (stageIndex < currentIndex) {
+      return "stage complete";
+    }
+    return "stage";
+  }
 };

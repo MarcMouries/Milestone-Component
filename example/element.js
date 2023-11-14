@@ -2,7 +2,7 @@ import '../src/x-snc-milestone';
 //import {DEFAULT_STAGE_LIST} from '../src/x-snc-milestone/sample_data';
 
 const DEFAULT_STAGE_LIST = ["Element 1", "Element 2", "Element 3"];
-const DEFAULT_CURRENT_STAGE = "Stage 2";
+const DEFAULT_CURRENT_STAGE = "Element 2";
 
 const el = document.createElement('DIV');
 document.body.appendChild(el);
@@ -28,12 +28,12 @@ el.innerHTML = `
 `;
  */
 
-// so we create teh element manually
+// so we create the custom element manually
 // Create the custom element
 const milestoneElement = document.createElement('x-snc-milestone');
 milestoneElement.mode = "STATIC";
 milestoneElement.stages = DEFAULT_STAGE_LIST; // Set the stages property directly
-milestoneElement['current-stage'] = DEFAULT_CURRENT_STAGE;
+milestoneElement['currentStage'] = DEFAULT_CURRENT_STAGE;
 // Append the custom element to the div
 el.appendChild(milestoneElement);
 
