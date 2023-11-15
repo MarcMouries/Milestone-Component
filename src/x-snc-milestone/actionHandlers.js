@@ -16,13 +16,23 @@ import {
   MODE_RECORD,
 } from "./constants";
 
+// Define the debug mode toggle and log function
+const debugModeIsOn = false;
+
+function log(message) {
+  if (debugModeIsOn) {
+    console.log(message);
+  }
+}
+
+
 export default {
   [COMPONENT_BOOTSTRAPPED]: ({ dispatch, updateState, properties, state }) => {
-    console.log("%c " + "Action COMPONENT_BOOTSTRAPPED", "font-weight:bold");
-    console.log(state);
+    log("%c " + "Action COMPONENT_BOOTSTRAPPED", "font-weight:bold");
+    log(state);
 
     const { mode, table, sysId } = properties;
-    console.log("MODE = ", mode);
+    log("MODE = " + mode);
 
     if (mode === MODE_STATIC) {
       updateState({ stages: properties.stages, currentStage: properties.currentStage, isLoading: false });
@@ -60,8 +70,8 @@ export default {
   [CHOICES_FETCH_SUCCESS]: ({ action, dispatch, state, updateState }) => {
     const result = action.payload.result;
     if (result) {
-      console.log("%c " + " ✅  CHOICES_FETCH_SUCCESS", "font-weight:bold");
-      console.log(result);
+      log("%c " + " ✅  CHOICES_FETCH_SUCCESS", "font-weight:bold");
+      log(result);
       let labelsList = result.map((item) => item.label);
       updateState({ stages: labelsList, shouldRender: false });
 
@@ -75,12 +85,12 @@ export default {
 
       });
     } else {
-      console.log("%c " + " ❌ CHOICES MISSING STAGE FIELD", "font-weight:bold");
+      log("%c " + " ❌ CHOICES MISSING STAGE FIELD", "font-weight:bold");
     }
   },
 
   [CHOICES_FETCH_FAILURE]: ({ action, updateState }) => {
-    //console.log("%c " + " ❌ CHOICES_FETCH_FAILURE", "font-weight:bold");
+    log("%c " + " ❌ CHOICES_FETCH_FAILURE", "font-weight:bold");
     updateState({ isLoading: false });
   },
 
@@ -95,15 +105,17 @@ export default {
     //const { payload: { result }} = action;
     const result = action.payload.result;
 
-    console.log("%c " + " ✅  RECORD_FETCH_SUCCESS", "font-weight:bold");
-    console.log(result);
+    log("%c " + " ✅  RECORD_FETCH_SUCCESS", "font-weight:bold");
+    log(" - record.stage = " + result.stage);
+    updateState({ currentStage: result.stage });
+
     if (!result.stage) {
-      console.log("%c " + " ❌ RECORD MISSING STAGE FIELD", "font-weight:bold");
+      log("%c " + " ❌ RECORD MISSING STAGE FIELD", "font-weight:bold");
     }
   },
 
   [RECORD_FETCH_FAILURE]: ({ action, state, updateState }) => {
-    console.log("%c " + " ❌ RECORD_FETCH_FAILURE", "font-weight:bold");
+    log("%c " + " ❌ RECORD_FETCH_FAILURE", "font-weight:bold");
     const payload = action.payload;
     const errorDetail = payload.data.error.detail;
     const { recordRequested } = state;
@@ -112,17 +124,17 @@ export default {
   },
 
   [DATA_REQUEST_START]: ({ action, dispatch, updateState }) => {
-    console.log("%c " + "  DATA_REQUEST_START", "font-weight:bold");
+    log("%c " + "  DATA_REQUEST_START", "font-weight:bold");
     const { payload, meta } = action;
     const request = action.meta.request;
 
-    console.log(meta);
-    console.log(request);
-    console.log(request.params);
+    log(meta);
+    log(request);
+    log(request.params);
   },
   [DATA_REQUEST_PROGRESS]: ({ action, updateState }) => {
-    console.log("%c " + " ?? DATA_REQUEST_PROGRESS", "font-weight:bold");
+    log("%c " + " ?? DATA_REQUEST_PROGRESS", "font-weight:bold");
     const payload = action.payload;
-    console.log("DATA_REQUEST_PROGRESS", payload);
+    log("DATA_REQUEST_PROGRESS", payload);
   },
 };
