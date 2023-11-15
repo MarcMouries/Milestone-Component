@@ -4,9 +4,25 @@ import '../src/x-snc-milestone';
 const DEFAULT_STAGE_LIST = ["Element 1", "Element 2", "Element 3"];
 const DEFAULT_CURRENT_STAGE = "Element 2";
 
-const el = document.createElement('DIV');
-document.body.appendChild(el);
+const css = `
+    .container {
+        padding: 10px;
+        border: solid;
+    }
 
+    .paragraph {
+        padding: 10px;
+        font-family: sans-serif;
+    }
+`;
+
+// Create a <style> element
+const style = document.createElement('style');
+style.type = 'text/css';
+style.appendChild(document.createTextNode(css));
+
+// Append the <style> element to the <head>
+document.head.appendChild(style);
 
 // Convert the array to a string and join elements with a comma
 // did not work
@@ -28,14 +44,39 @@ el.innerHTML = `
 `;
  */
 
-// so we create the custom element manually
-// Create the custom element
-const milestoneElement = document.createElement('x-snc-milestone');
-milestoneElement.mode = "STATIC";
-milestoneElement.stages = DEFAULT_STAGE_LIST; // Set the stages property directly
-milestoneElement['currentStage'] = DEFAULT_CURRENT_STAGE;
-// Append the custom element to the div
-el.appendChild(milestoneElement);
+/*  Create the custom elements manually so we can pass data more easily */
+/************************************************************************/
+
+// Create the container div
+const el = document.createElement('DIV');
+el.style.padding = '10px';
+el.style.border = 'solid';
+document.body.appendChild(el);
+
+// Create the first milestone element
+const paragraphStatic = createParagraph('Mode = STATIC');
+const milestoneStatic = document.createElement('x-snc-milestone');
+milestoneStatic.mode = "STATIC";
+milestoneStatic.stages = DEFAULT_STAGE_LIST;
+milestoneStatic.currentStage = DEFAULT_CURRENT_STAGE;
+el.appendChild(paragraphStatic);
+el.appendChild(milestoneStatic);
+
+// Create a paragraph for the second component
+const paragraphRecord = createParagraph('Mode = RECORD');
+const milestoneRecord = document.createElement('x-snc-milestone');
+milestoneRecord.mode = 'RECORD';
+milestoneRecord.table = 'x_snc_uib_examples_order';
+milestoneRecord.sysId = '9cab58f31b96b910b00dddf6b04bcb98';
+el.appendChild(paragraphRecord);
+el.appendChild(milestoneRecord);
+
+function createParagraph(text) {
+  const paragraph = document.createElement('p');
+  paragraph.classList.add('paragraph');
+  paragraph.textContent = text;
+  return paragraph;
+}
 
 /*
 el.innerHTML = `
@@ -54,5 +95,4 @@ el.innerHTML = `
         </x-snc-milestone>
     </div>
 `;
-
 */
