@@ -4,12 +4,17 @@ export default (state) => {
   console.log("Milestone Component: state", state);
  // console.log("%c " + " • table    : " + properties.table, "font-style:italic");
  // console.log("%c " + " • sysId    : " + properties.sysId, "font-style:italic");
-  console.log("%c " + " • isLoading: " + state.isLoading, "font-style:italic");
+ // console.log("%c " + " • isLoading: " + state.isLoading, "font-style:italic");
  // console.log("%c " + " • stages   : " + JSON.stringify(properties.stages), "font-style:italic");
  //console.log("%c " + " • stages   : " + JSON.stringify(stages), "font-style:italic");
- console.log("%c " + " • stages   : " + stages, "font-style:italic");
- console.log("%c " + " • current  : " + currentStage, "font-style:italic");
+ //console.log("%c " + " • stages   : " + stages, "font-style:italic");
+ //console.log("%c " + " • current  : " + currentStage, "font-style:italic");
 
+ if (!stages) {
+  //console.log("%c " + " • stages   : NULL" , "font-style:italic");
+
+  return;
+ }
   const currentIndex = stages.findIndex((stage) => stage === currentStage);
 
   return (
