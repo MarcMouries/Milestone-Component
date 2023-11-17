@@ -73,7 +73,7 @@
 					"description": "The name of the table where the record is stored",
 					"readOnly": false,
 					"fieldType": "table_name",
-					"required": true,
+					"required": false,
 					"defaultValue": "",
 					"typeMetadata": {}
 				},
@@ -83,7 +83,7 @@
 					"description": "The unique identifier for the record",
 					"readOnly": false,
 					"fieldType": "string",
-					"required": true,
+					"required": false,
 					"defaultValue": "",
 					"typeMetadata": {}
 				}

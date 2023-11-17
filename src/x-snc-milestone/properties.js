@@ -12,7 +12,7 @@ export default {
     },
   },
   stages: {
-    required: true,
+    required: false,
     schema: { type: "array" },
     default: DEFAULT_STAGE_LIST,
     onChange(currentValue, previousValue, dispatch) {
@@ -23,7 +23,7 @@ export default {
     },
   },
   currentStage: {
-    required: true,
+    required: false,
     schema: { type: "string" },
     default: DEFAULT_CURRENT_STAGE,
     onChange(currentValue, previousValue, dispatch) {
@@ -32,9 +32,11 @@ export default {
       console.log(" currentValue  : " + currentValue);    },
   },
   table: {
+    required: false,
     default: ""
   },
   sysId: {
+    required: false,
     default: ""
   }
 };
