@@ -3,7 +3,7 @@ import { DEFAULT_STAGE_LIST, DEFAULT_CURRENT_STAGE } from "./sample_data";
 export default {
   mode : {
     schema: { type: "string" },
-    default: "RECORD",
+    default: "STATIC",
     onChange(currentValue, previousValue, dispatch) {
       //dispatch(customActions.INITIALIZE_MAP);
       console.log("%c " + "Property stages changed", "font-weight:bold");

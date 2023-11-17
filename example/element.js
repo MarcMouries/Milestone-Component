@@ -57,8 +57,11 @@ document.body.appendChild(el);
 const paragraphStatic = createParagraph('Mode = STATIC');
 const milestoneStatic = document.createElement('x-snc-milestone');
 milestoneStatic.mode = "STATIC";
-milestoneStatic.stages = DEFAULT_STAGE_LIST;
-milestoneStatic.currentStage = DEFAULT_CURRENT_STAGE;
+//milestoneStatic.stages = DEFAULT_STAGE_LIST;
+//milestoneStatic.currentStage = DEFAULT_CURRENT_STAGE;
+//milestoneStatic.stages = ["a", "b", "c"];
+//milestoneStatic.currentStage = "b";
+
 el.appendChild(paragraphStatic);
 el.appendChild(milestoneStatic);
 

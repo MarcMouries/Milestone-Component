@@ -11,7 +11,7 @@
 				"category": "primitives",
 				"description": "Milestone Component",
 				"icon": "stepper",
-				"label": "AES Milestone Tracker"
+				"label": "AES Stage Tracker"
 			},
 			"properties": [
 				{
@@ -74,7 +74,7 @@
 					"readOnly": false,
 					"fieldType": "table_name",
 					"required": true,
-					"defaultValue": "task",
+					"defaultValue": "",
 					"typeMetadata": {}
 				},
 				{
