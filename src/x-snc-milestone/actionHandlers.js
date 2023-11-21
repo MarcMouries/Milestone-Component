@@ -27,6 +27,18 @@ function log(message) {
 
 
 export default {
+
+
+  [COMPONENT_PROPERTY_CHANGED] : ({action, dispatch, properties}) => {
+    log("%c " + "Action COMPONENT_PROPERTY_CHANGED", "font-weight:bold");
+    const payload = action.payload;
+    log(" action ", action);
+    log(" payload ", payload);
+    log(" properties ", properties);
+    //dispatch('TALLY_CHANGED', {tally});
+},
+
+
   [COMPONENT_BOOTSTRAPPED]: ({ dispatch, updateState, properties, state }) => {
     log("%c " + "Action COMPONENT_BOOTSTRAPPED", "font-weight:bold");
     log(state);
