@@ -1,5 +1,5 @@
 import { actionTypes } from "@servicenow/ui-core";
-const { COMPONENT_BOOTSTRAPPED } = actionTypes;
+const { COMPONENT_BOOTSTRAPPED, COMPONENT_PROPERTY_CHANGED } = actionTypes;
 
 import { getHttpEffect } from "./getHttpEffect";
 import { createHttpEffect } from "@servicenow/ui-effect-http";
