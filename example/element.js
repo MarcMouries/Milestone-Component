@@ -11,8 +11,9 @@ const css = `
     }
 
     .paragraph {
-        padding: 10px;
-        font-family: sans-serif;
+      padding-top: 10px;
+      font-family: sans-serif;
+      margin-bottom: 5px;
     }
 `;
 
