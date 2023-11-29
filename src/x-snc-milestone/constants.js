@@ -18,3 +18,5 @@ export const DATA_REQUEST_PROGRESS = "DATA_REQUEST_PROGRESS";
  */
  export const MODE_STATIC = "STATIC";
  export const MODE_RECORD = "RECORD";
+
+ export const CURRENT_STAGE_CHANGED = "CURRENT_STAGE_CHANGED";
