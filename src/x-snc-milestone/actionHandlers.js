@@ -15,44 +15,61 @@ function log(message) {
   console.log(message);
 }
 
-
-
 export default {
+  // [COMPONENT_PROPERTY_CHANGED]: ({ action, dispatch, properties }) => {
+  //   console.log("%c " + "Action COMPONENT_PROPERTY_CHANGED", "font-weight:bold");
+  //   const payload = action.payload;
+  //   log(" action ", action);
+  //   log(" payload ", payload);
+  //   log(" properties ", properties);
+  //   //dispatch('TALLY_CHANGED', {tally});
+  // },
 
-
-  [COMPONENT_PROPERTY_CHANGED]: ({ action, dispatch, properties }) => {
+  [COMPONENT_PROPERTY_CHANGED]: ({ action, updateState }) => {
     console.log("%c " + "Action COMPONENT_PROPERTY_CHANGED", "font-weight:bold");
-    const payload = action.payload;
-    log(" action ", action);
-    log(" payload ", payload);
-    log(" properties ", properties);
-    //dispatch('TALLY_CHANGED', {tally});
+    console.log("action.payload.property", action.payload.property);
+    updateState({
+      ...state,
+      [action.payload.property]: action.payload.value,
+    });
   },
 
-
   [COMPONENT_BOOTSTRAPPED]: ({ dispatch, updateState, properties, state }) => {
-    console.log("%c " + "Action COMPONENT_BOOTSTRAPPED", "font-weight:bold");
-    log(state);
-    const { mode, table, sysId } = properties;
-    log("MODE = " + mode);
+    console.log("%c " + "Action COMPONENT_BOOTSTRAPPED: " + state.properties.mode, "font-weight:bold");
 
-    if (mode === MODE_STATIC) {
-      updateState({ stages: properties.stages, currentStage: properties.currentStage, isLoading: false });
-    }
-    else if (mode === MODE_RECORD && table && sysId) {
+    if (properties.mode === MODE_STATIC) {
+      // For MODE_STATIC, set isLoading to false and use properties for stages and currentStage
       updateState({
+        ...state,
+        ...properties,
+        isLoading: false,
+        shouldRender: true,
+      });
+    } else if (properties.mode === MODE_RECORD && properties.table && properties.sysId) {
+      // For MODE_RECORD, set isLoading to true and dispatch CHOICES_FETCH_REQUEST
+      updateState({
+        ...state,
+        ...properties,
         isLoading: true,
-        recordRequested: { table: table, sysId: sysId },
         shouldRender: false,
+        recordRequested: { table: properties.table, sysId: properties.sysId },
       });
 
       dispatch(CHOICES_FETCH_REQUEST, {
-        sysparm_query: `name=${table}^element=stage`,
+        sysparm_query: `name=${properties.table}^element=stage`,
         sysparm_fields: "label,value",
-        sysparm_display_value: 'true'
+        sysparm_display_value: "true",
+      });
+    } else {
+      // Default state update if neither condition is met
+      console.log("%c " + "Action COMPONENT_BOOTSTRAPPED in ELSE ", "font-weight:bold");
+      updateState({
+        ...state,
+        ...properties,
+        isLoading: false,
+        shouldRender: true,
       });
     }
-
   },
 
   [CHOICES_FETCH_REQUEST]: createHttpEffect("/api/now/table/sys_choice", {
@@ -77,15 +94,13 @@ export default {
       dispatch(RECORD_FETCH_REQUEST, {
         table: table,
         sysId: sysId,
-        sysparm_fields: 'number,short_description,stage',
-        sysparm_display_value: 'true',
+        sysparm_fields: "number,short_description,stage",
+        sysparm_display_value: "true",
       });
     } else {
       console.log("%c " + " ❌ CHOICES MISSING STAGE FIELD", "font-weight:bold");
     }
   },
-
-
 
   [RECORD_FETCH_REQUEST]: getHttpEffect({
     startActionType: DATA_REQUEST_START,
@@ -98,16 +113,14 @@ export default {
     console.log("%c " + " ✅  RECORD_FETCH_SUCCESS", "font-weight:bold");
     const result = action.payload.result;
     console.log(" - record.stage = " + result.stage);
-    
+
     if (result.stage) {
       updateState({ currentStage: result.stage, isLoading: false });
     } else {
       console.log("%c ❌ RECORD MISSING STAGE FIELD", "font-weight:bold");
       updateState({ isLoading: false, hasError: true, errorMessage: "Record missing stage field." });
     }
-
   },
-
 
   [CHOICES_FETCH_FAILURE]: ({ action, state, updateState }) => {
     console.log("%c " + " ❌ CHOICES_FETCH_FAILURE", "font-weight:bold");
@@ -135,9 +148,7 @@ export default {
     const { meta } = action;
     const request = action.meta.request;
     console.log("%c " + "  DATA_REQUEST_START: " + request.url, "font-weight:bold");
-    console.log(meta);
-    console.log(request);
-    console.log(request.params);
+    console.log("request = ", request);
   },
 
   [DATA_REQUEST_PROGRESS]: ({ action, updateState }) => {
