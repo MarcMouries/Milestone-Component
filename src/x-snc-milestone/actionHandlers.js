@@ -39,6 +39,7 @@ export default {
 
     if (properties.mode === MODE_STATIC) {
       // For MODE_STATIC, set isLoading to false and use properties for stages and currentStage
+      // initialize the component's state with properties passed to the component.
       updateState({
         ...state,
         ...properties,
