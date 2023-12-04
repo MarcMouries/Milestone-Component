@@ -1,12 +1,46 @@
 export default (state) => {
-  const { currentStage, stages, hasError, errorMessage, isLoading } = state;
+  const { currentStage, stages, size, hasError, errorMessage, isLoading, mode } = state;
+  const stageStyle = {
+    fontSize: determineFontSize(size),
+    height: determineHeight(size),
+  };
+  console.log("%c " + "VIEW:" + state.properties.mode, "font-weight:bold");
+  console.log("state = ", state);
 
+  console.log("stageStyle = ", stageStyle);
+  
   const renderErrorMessages = () => {
     const errorMessages = ["Error Detected", "Configuration Issue", "Please Review Settings"];
     return errorMessages.map((message, index) => (
-      <li key={`error-${index}`} className="stage error">{message}</li>
+      <li key={`error-${index}`} className="stage error">
+        {message}
+      </li>
     ));
   };
+
+
+
+  function determineFontSize(size) {
+    switch (size) {
+      case "small":
+        return "0.6rem";
+      case "large":
+        return "1rem";
+      default:
+        return "0.8rem"; // medium
+    }
+  }
+
+  function determineHeight(size) {
+    switch (size) {
+      case "small":
+        return "1.8em";
+      case "large":
+        return "2.5em";
+      default:
+        return "2em"; // medium
+    }
+  }
 
   const renderStages = () => {
     if (isLoading) {
@@ -15,17 +49,17 @@ export default (state) => {
     if (!stages || stages.length === 0) {
       return hasError ? renderErrorMessages() : <div className="error">No stages available.</div>;
     }
-    const currentStageIndex = stages.findIndex(stage => stage === currentStage);
+    const currentStageIndex = stages.findIndex((stage) => stage === currentStage);
     return stages.map((stage, index) => (
-      <li key={`stage-${index}`} className={getClassName(index, currentStageIndex)}><a href="#">{stage}</a></li>
+      <li key={`stage-${index}`} className={getClassName(index, currentStageIndex)} style={stageStyle}>
+        <a href="#">{stage}</a>
+      </li>
     ));
   };
 
   return (
     <div className="container">
-      <ul className="stage-tracker">
-        {renderStages()}
-      </ul>
+      <ul className="stage-tracker">{renderStages()}</ul>
       {hasError && <div className="error-message">{errorMessage}</div>}
     </div>
   );
@@ -44,8 +78,6 @@ export default (state) => {
   }
 };
 
-
-
 /* VERSIONS WITH THE POP OVER
   return (
     <div className="container">
@@ -54,7 +86,6 @@ export default (state) => {
         {stages.map((stage, index) => (
           <li className={getClassName(index)}><a href="#">{stage}</a>
           </li>
-          
 						<li className={getClassName(index)}>
 							<a href="">{stage.label}</a>
 							<now-popover interaction-type="none"
@@ -63,7 +94,6 @@ export default (state) => {
 								<stage-details slot="content" stage={stage.label}/>
 							</now-popover>
 						</li>
-						 
         ))}
       </ul>
     </div>
