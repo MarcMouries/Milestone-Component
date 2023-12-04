@@ -43,5 +43,10 @@ export default {
   sysId: {
     required: false,
     default: ""
+  },
+  size: {
+    required: false,
+    schema: { type: "string" },
+    default: "medium"
   }
 };
