@@ -36,10 +36,10 @@
 					}
 				},
 				{
+					"name": "stages",
+					"label": "Stages",
 					"description": "List of stages to display",
 					"fieldType": "json",
-					"label": "Stages",
-					"name": "stages",
 					"readOnly": false,
 					"required": false,
 					"defaultValue": [
@@ -64,7 +64,7 @@
 					"readOnly": false,
 					"fieldType": "string",
 					"required": true,
-					"defaultValue": "",
+					"defaultValue": "Your",
 					"typeMetadata": {}
 				},
 				{
@@ -86,6 +86,31 @@
 					"required": false,
 					"defaultValue": "",
 					"typeMetadata": {}
+				},
+				{
+					"name": "size",
+					"label": "Size",
+					"description": "Drives the height and font size",
+					"fieldType": "choice",
+					"readOnly": false,
+					"defaultValue": "medium",
+					"typeMetadata": {
+					  "variant": "radio-group",
+					  "choices": [
+						{
+						  "label": "Small",
+						  "value": "small"
+						},
+						{
+						  "label": "Medium",
+						  "value": "medium"
+						},
+						{
+						  "label": "Large",
+						  "value": "large"
+						}
+					  ]
+					}
 				}
 			]
 		}
