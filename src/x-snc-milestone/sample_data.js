@@ -1,5 +1,5 @@
-export const DEFAULT_STAGE_LIST = ["Stage 1", "Stage 2", "Stage 3"];
-export const DEFAULT_CURRENT_STAGE = "Stage 2";
+export const DEFAULT_STAGE_LIST = ["Set", "Your", "Own", "Stages"];
+export const DEFAULT_CURRENT_STAGE = "Your";
 
 export const DEFAULT_STAGE_LIST_2 = ["Submission", "Triage", "Fulfillment" , "Closure"];
 
