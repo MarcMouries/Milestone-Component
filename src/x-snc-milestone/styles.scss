@@ -1,8 +1,15 @@
 @import "@servicenow/sass-kit/host";
 @import 'theme';
 
+:root {
+	--stage-font-size: 0.5rem; // default font size
+	--stage-tracker-height: 5em; // default height
+}
+
+
 .stage-tracker {
 	width: 100%;
+	height: var(--stage-tracker-height);
 	background: $stage-tracker-background;
 	margin: 0;
 	counter-reset: step;
@@ -19,6 +26,7 @@
 }
 
 .stage {
+	//font-size: var(--stage-font-size);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -26,8 +34,17 @@
 	background: $stage-background;
 	color: $stage-text-color;
 	font-family: inherit;
-	font-size: inherit;
-	height: calc(2rem);
+
+
+	a {
+		text-decoration: none;
+		color: inherit;
+		font-size: inherit;
+		font-weight: bold;
+		font-family: var(--now-font-family);
+		text-transform: uppercase;
+	}
+
 }
 .stage:not(:first-child) {
 	margin-left: -6px;
@@ -54,14 +71,6 @@
 }
 .stage:last-child {
 	clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 10px 50%, 0% 0%);
-}
-
-.stage a {
-	text-decoration: none;
-	color: inherit;
-	font-size: 0.8rem;
-	font-weight: bold;
-	text-transform: uppercase;
 }
 
 .stage:hover {
