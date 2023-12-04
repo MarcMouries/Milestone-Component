@@ -25,26 +25,7 @@ style.appendChild(document.createTextNode(css));
 // Append the <style> element to the <head>
 document.head.appendChild(style);
 
-// Convert the array to a string and join elements with a comma
-// did not work
-//const stagesString = DEFAULT_STAGE_LIST.join('", "');
-// did not work
-// const example = '[\"Element 1\", \"Element 2\", \"Element 3\"]';
-
-// Error: Parsing failed for property stages on component x-snc-milestone: expected to be type array but received string.
-
-/*
-el.innerHTML = `
-    <div style="padding: 0px; border: solid">
-    <p style="padding: 10px; font-family: sans-serif">Mode = STATIC</p>
-    <x-snc-milestone
-      mode="STATIC"
-      stages=["${example}"]
-      current-stage="Element 2">
-    </x-snc-milestone>
-`;
- */
-
+/************************************************************************/
 /*  Create the custom elements manually so we can pass data more easily */
 /************************************************************************/
 
@@ -54,15 +35,19 @@ el.style.padding = '10px';
 el.style.border = 'solid';
 document.body.appendChild(el);
 
+// Default Mode (No properties set)
+const paragraphDefault = createParagraph('Default Mode (No properties set)');
+const milestoneDefault = document.createElement('x-snc-milestone');
+el.appendChild(paragraphDefault);
+el.appendChild(milestoneDefault);
+
 // Create the first milestone element
 const paragraphStatic = createParagraph('Mode = STATIC');
 const milestoneStatic = document.createElement('x-snc-milestone');
 milestoneStatic.mode = "STATIC";
-//milestoneStatic.stages = DEFAULT_STAGE_LIST;
-//milestoneStatic.currentStage = DEFAULT_CURRENT_STAGE;
-//milestoneStatic.stages = ["a", "b", "c"];
-//milestoneStatic.currentStage = "b";
-
+milestoneStatic.size = "small";
+milestoneStatic.stages = ["Submission", "Review", "Complete"]; // Due on Feb 1, 2024
+milestoneStatic.currentStage = "Review";
 el.appendChild(paragraphStatic);
 el.appendChild(milestoneStatic);
 
