@@ -16,23 +16,17 @@ function log(message) {
 }
 
 export default {
-  // [COMPONENT_PROPERTY_CHANGED]: ({ action, dispatch, properties }) => {
-  //   console.log("%c " + "Action COMPONENT_PROPERTY_CHANGED", "font-weight:bold");
-  //   const payload = action.payload;
-  //   log(" action ", action);
-  //   log(" payload ", payload);
-  //   log(" properties ", properties);
-  //   //dispatch('TALLY_CHANGED', {tally});
-  // },
 
-  [COMPONENT_PROPERTY_CHANGED]: ({ action, updateState }) => {
+  [COMPONENT_PROPERTY_CHANGED]: ({ action, updateState, state }) => {
     console.log("%c " + "Action COMPONENT_PROPERTY_CHANGED", "font-weight:bold");
-    console.log("action.payload.property", action.payload.property);
-    updateState({
-      ...state,
-      [action.payload.property]: action.payload.value,
-    });
+    const propertyUpdated = action.payload.name;
+    const propertyNewValue = action.payload.value;
+    console.log("New value for " + propertyUpdated + " = " + propertyNewValue);
+
+    updateState({ [propertyUpdated]: propertyNewValue, shouldRender: false });
+    updateState({ shouldRender: true });
   },
+
 
   [COMPONENT_BOOTSTRAPPED]: ({ dispatch, updateState, properties, state }) => {
     console.log("%c " + "Action COMPONENT_BOOTSTRAPPED: " + state.properties.mode, "font-weight:bold");
