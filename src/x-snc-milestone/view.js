@@ -7,8 +7,6 @@ export default (state) => {
   console.log("%c " + "VIEW:" + state.properties.mode, "font-weight:bold");
   console.log("state = ", state);
 
-  console.log("stageStyle = ", stageStyle);
-  
   const renderErrorMessages = () => {
     const errorMessages = ["Error Detected", "Configuration Issue", "Please Review Settings"];
     return errorMessages.map((message, index) => (
