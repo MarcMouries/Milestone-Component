@@ -4,14 +4,14 @@
 		"x-snc-milestone": {
 			"innerComponents": [],
 			"uiBuilder": {
+				"label": "AES Stage Tracker",
+				"description": "Milestone Component",
+				"icon": "stepper",
 				"associatedTypes": [
 					"global.core",
 					"global.landing-page"
 				],
-				"category": "primitives",
-				"description": "Milestone Component",
-				"icon": "stepper",
-				"label": "AES Stage Tracker"
+				"category": "primitives"
 			},
 			"properties": [
 				{
