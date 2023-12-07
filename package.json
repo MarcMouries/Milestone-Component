@@ -4,7 +4,7 @@
 		"type": "git",
 		"url": "https://github.com/MarcMouries/Milestone-Component.git"
 	},
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": false,
 	"description": "Milestone component",
 	"keywords": [
@@ -37,6 +37,6 @@
 	},
 	"scripts": {
 		"dev": "snc ui-component develop --open",
-		"deploy": "snc ui-component develop --open"
+		"deploy": "snc ui-component deploy  --force"
 	}
 }
