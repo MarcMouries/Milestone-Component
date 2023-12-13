@@ -4,7 +4,7 @@ export default (state) => {
     fontSize: determineFontSize(size),
     height: determineHeight(size),
   };
-  console.log("%c " + "VIEW:" + state.properties.mode, "font-weight:bold");
+  console.log("%c " + "VIEW (component " + state.componentId + " - " + state.properties.mode + ")", "font-weight:bold");
   console.log("state = ", state);
 
   const renderErrorMessages = () => {
