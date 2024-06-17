@@ -42,7 +42,7 @@ el.appendChild(paragraphDefault);
 el.appendChild(milestoneDefault);
 
 // Create the first milestone element
-const paragraphStatic = createParagraph('Mode = STATIC');
+const paragraphStatic = createParagraph('Mode = STATIC & Size = small');
 const milestoneStatic = document.createElement('x-snc-milestone');
 milestoneStatic.mode = "STATIC";
 milestoneStatic.size = "small";
