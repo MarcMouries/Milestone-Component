@@ -34,6 +34,8 @@
 	background: $stage-background;
 	color: $stage-text-color;
 	font-family: inherit;
+	cursor: pointer;
+
 
 
 	a {
@@ -90,7 +92,7 @@
 }
 .stage:before {
 	font-weight: bolder;
-	margin-right: 3px;
+	margin-right: 5px;
 }
 
 .stage.complete:before {
