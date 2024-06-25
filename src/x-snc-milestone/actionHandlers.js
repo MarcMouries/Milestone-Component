@@ -51,7 +51,7 @@ export default {
       });
 
       dispatch(CHOICES_FETCH_REQUEST, {
-        sysparm_query: `name=${properties.table}^element=stage`,
+        sysparm_query: `name=${properties.table}^element=stage^ORDERBYsequence`,
         sysparm_fields: "label,value",
         sysparm_display_value: "true",
       });
