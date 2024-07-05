@@ -1,19 +1,42 @@
-# milestone-tracker-component
+# Milestone tracker component
 
-Milestone tracker component for the Now Experience.
+This custom component for the Now Experience provides a very intuitive way to visualize  the progress of a record in ServiceNow. It was built to be very easily configured in UI Builder
 
-- point to a table and a sysId
+## Mode Options
+The component supports two modes:
+
+- **Static Mode**: Manually configure a list of stages and set the currently active stage. This mode is suitable for predefined, non-dynamic workflows.
+- **Record Mode**: Specify a table and the `sysId` of a record. The component will automatically fetch the list of stages and the current stage based on the record's data.
+
+## Size Options
+Choose from three sizes to ensure the component fits various layouts:
+
+- **Small**
+- **Medium**
+- **Large**
+
+## Stage Configuration
+- **Static Mode**:
+  - Define your own list of stages.
+  - Set the `currentStage` property to indicate the active stage.
+
+- **Record Mode**:
+  - Ensure the specified table contains a field named `stage` of the type 'workflow', with a list of stages defined.
+  - The component fetches these stages and the current stage from the record automatically.
+
+These configuration options allow the Milestone Tracker to be versatile, fitting different scenarios within ServiceNow, adaptable to both static and dynamic workflows.
 
 
 ![Preview of Milestone tracker](./doc/milestone-tracker.png)
 
 ## Prerequisites
-1. Install Node version 12.16
-    * https://nodejs.org/ru/blog/release/v12.16.1/
+1. Install Node version v16.
+    * https://nodejs.org/ru/blog/release/v16/
     * It's the version supported by the ServiceNow CLI
 
-2. Install ServiceNow CLI
-    * Download from the [ServiceNow App Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/9085854adbb52810122156a8dc961910/1.1.0?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3DServiceNow%2520CLI&sl=sh)
+2. Now CLI @26.5.0
+    * Install ServiceNow CLI
+    Download from the [ServiceNow App Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/9085854adbb52810122156a8dc961910/1.1.0?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3DServiceNow%2520CLI&sl=sh)
 
 3. Configure the ServiceNow CLI to communicate with a ServiceNow instance
     ```
