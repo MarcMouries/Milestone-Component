@@ -1,4 +1,4 @@
-export default (state) => {
+export default (state, { updateState, dispatch }) => {
   const { currentStage, stages, size, hasError, errorMessage, isLoading, mode } = state;
   const stageStyle = {
     fontSize: determineFontSize(size),
@@ -16,7 +16,14 @@ export default (state) => {
     ));
   };
 
-
+  const handleClickOnStage = (e, stage, dispatch) => {
+    const fieldValue = e.target.innerText;
+    console.log("handleClickOnStage: stage = " + stage);
+    
+    dispatch(({ properties: { name } }) => {
+      return { type: "MILESTONE#CLICK", payload: { name, stage } };
+    });
+  };
 
   function determineFontSize(size) {
     switch (size) {
@@ -49,11 +56,16 @@ export default (state) => {
     }
     const currentStageIndex = stages.findIndex((stage) => stage === currentStage);
     return stages.map((stage, index) => (
-      <li key={`stage-${index}`} className={getClassName(index, currentStageIndex)} style={stageStyle}>
+      <li key={`stage-${index}`} 
+          className={getClassName(index, currentStageIndex)} 
+          style={stageStyle} 
+          on-click={(e) => handleClickOnStage(e, stage, dispatch)}>
         <a href="#">{stage}</a>
       </li>
     ));
   };
+
+
 
   return (
     <div className="container">
