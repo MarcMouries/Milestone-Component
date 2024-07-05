@@ -1,42 +1,42 @@
 {
-	"name": "@marc/x-snc-milestone",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/MarcMouries/Milestone-Component.git"
-	},
-	"version": "0.0.2",
-	"private": false,
-	"description": "Milestone component",
-	"keywords": [
-		"Milestone",
-		"Progress",
-		"Task"
-	],
-	"license": "For ServiceNow use",
-	"readme": "./README.md",
-	"engines": {
-		"node": ">=8.6.0",
-		"npm": ">=5.3.0"
-	},
-	"module": "src/index.js",
-	"dependencies": {
-		"@servicenow/cli-archetype": "latest",
-		"@servicenow/cli-component-archetype": "latest",
-		"@servicenow/library-translate": "latest",
-		"@servicenow/now-popover": "latest",
-		"@servicenow/now-button": "latest",
-		"@servicenow/sass-kit": "latest",
-		"@servicenow/sass-theme": "latest",
-		"@servicenow/ui-core": "latest",
-		"@servicenow/ui-effect-http": "latest",
-		"@servicenow/ui-renderer-snabbdom": "latest"
-	},
-	"devDependencies": {
-		"@servicenow/cli-archetype-dev": "latest",
-		"@servicenow/cli-component-archetype-dev": "latest"
-	},
-	"scripts": {
-		"dev": "snc ui-component develop --open",
-		"deploy": "snc ui-component deploy  --force"
-	}
+  "name": "@marc/x-snc-milestone",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarcMouries/Milestone-Component.git"
+  },
+  "version": "0.0.2",
+  "private": false,
+  "description": "Milestone component",
+  "keywords": [
+    "Milestone",
+    "Progress",
+    "Task"
+  ],
+  "license": "For ServiceNow use",
+  "readme": "./README.md",
+  "engines": {
+    "node": ">=14"
+  },
+  "module": "src/index.js",
+  "dependencies": {
+    "@servicenow/cli-archetype": "latest",
+    "@servicenow/cli-component-archetype": "latest",
+    "@servicenow/library-translate": "latest",
+    "@servicenow/now-popover": "latest",
+    "@servicenow/now-button": "latest",
+    "@servicenow/sass-kit": "latest",
+    "@servicenow/sass-theme": "latest",
+    "@servicenow/ui-core": "24.1.1",
+    "@servicenow/ui-renderer-snabbdom": "24.1.1",
+    "@servicenow/ui-effect-http": "latest"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.18.9",
+    "ajv": "^6.12.6",
+    "sass": "1.53.0"
+  },
+  "scripts": {
+    "dev": "snc ui-component develop --open",
+    "deploy": "snc ui-component deploy  --force"
+  }
 }
