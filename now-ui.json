@@ -11,7 +11,37 @@
 					"global.core",
 					"global.landing-page"
 				],
-				"category": "primitives"
+				"category": "primitives",
+				"configLayout": {
+					"layout": [
+						"size",
+						"currentStage",
+						"mode",
+						{
+							"initialOpenState": true,
+							"sectionType": "section",
+							"id": "static",
+							"title": "Static Mode",
+							"children": [
+								"stages"
+							],
+							"icon": "text-outline"
+						},
+						{
+							"initialOpenState": false,
+							"sectionType": "section",
+							"id": "record",
+							"title": "Record Mode",
+							"children": [
+								"table",
+								"sysId"
+							],
+							"icon": "text-outline"
+						}
+					]
+				},
+				"scriptedConfigPolicy": "uib/milestone-properties-policy.js"
+
 			},
 			"properties": [
 				{
@@ -69,7 +99,7 @@
 				},
 				{
 					"name": "table",
-					"label": "table",
+					"label": "Table",
 					"description": "The name of the table where the record is stored",
 					"readOnly": false,
 					"fieldType": "table_name",
@@ -79,7 +109,7 @@
 				},
 				{
 					"name": "sysId",
-					"label": "sysId",
+					"label": "SysId",
 					"description": "The unique identifier for the record",
 					"readOnly": false,
 					"fieldType": "string",
@@ -95,21 +125,21 @@
 					"readOnly": false,
 					"defaultValue": "medium",
 					"typeMetadata": {
-					  "variant": "radio-group",
-					  "choices": [
-						{
-						  "label": "Small",
-						  "value": "small"
-						},
-						{
-						  "label": "Medium",
-						  "value": "medium"
-						},
-						{
-						  "label": "Large",
-						  "value": "large"
-						}
-					  ]
+						"variant": "radio-group",
+						"choices": [
+							{
+								"label": "Small",
+								"value": "small"
+							},
+							{
+								"label": "Medium",
+								"value": "medium"
+							},
+							{
+								"label": "Large",
+								"value": "large"
+							}
+						]
 					}
 				}
 			]
