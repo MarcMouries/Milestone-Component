@@ -3,9 +3,9 @@ const { COMPONENT_BOOTSTRAPPED, COMPONENT_PROPERTY_CHANGED } = actionTypes;
 
 import { getHttpEffect } from "./getHttpEffect";
 import { createHttpEffect } from "@servicenow/ui-effect-http";
-import { RECORD_FETCH_REQUEST, RECORD_FETCH_SUCCESS, RECORD_FETCH_FAILURE } from "./constants";
-import { CHOICES_FETCH_REQUEST, CHOICES_FETCH_SUCCESS, CHOICES_FETCH_FAILURE } from "./constants";
-import { DATA_REQUEST_START, DATA_REQUEST_PROGRESS } from "./constants";
+import { CURRENT_STAGE_REQUEST, CURRENT_STAGE_SUCCESS, CURRENT_STAGE_FAILURE } from "./constants";
+import { STAGE_CHOICES_REQUEST, STAGE_CHOICES_SUCCESS, STAGE_CHOICES_FAILURE } from "./constants";
+import { DATA_FETCH_START, DATA_FETCH_PROGRESS } from "./constants";
 import { MODE_STATIC, MODE_RECORD } from "./constants";
 
 // Define the debug mode toggle and log function
@@ -41,7 +41,7 @@ export default {
         shouldRender: true,
       });
     } else if (properties.mode === MODE_RECORD && properties.table && properties.sysId) {
-      // For MODE_RECORD, set isLoading to true and dispatch CHOICES_FETCH_REQUEST
+      // For MODE_RECORD, set isLoading to true and dispatch STAGE_CHOICES_REQUEST
       updateState({
         ...state,
         ...properties,
@@ -50,33 +50,24 @@ export default {
         recordRequested: { table: properties.table, sysId: properties.sysId },
       });
 
-      dispatch(CHOICES_FETCH_REQUEST, {
+      dispatch(STAGE_CHOICES_REQUEST, {
         sysparm_query: `name=${properties.table}^element=stage^ORDERBYsequence`,
         sysparm_fields: "label,value",
         sysparm_display_value: "true",
       });
-    } else {
-      // Default state update if neither condition is met
-      console.log("%c " + "Action COMPONENT_BOOTSTRAPPED in ELSE ", "font-weight:bold");
-      updateState({
-        ...state,
-        ...properties,
-        isLoading: false,
-        shouldRender: true,
-      });
-    }
+    } 
   },
 
-  [CHOICES_FETCH_REQUEST]: createHttpEffect("/api/now/table/sys_choice", {
+  [STAGE_CHOICES_REQUEST]: createHttpEffect("/api/now/table/sys_choice", {
     queryParams: ["sysparm_query", "sysparm_fields", "sysparm_display_value"],
-    startActionType: DATA_REQUEST_START,
-    progressActionType: DATA_REQUEST_PROGRESS,
-    successActionType: CHOICES_FETCH_SUCCESS,
-    errorActionType: CHOICES_FETCH_FAILURE,
+    startActionType: DATA_FETCH_START,
+    progressActionType: DATA_FETCH_PROGRESS,
+    successActionType: STAGE_CHOICES_SUCCESS,
+    errorActionType: STAGE_CHOICES_FAILURE,
   }),
 
-  [CHOICES_FETCH_SUCCESS]: ({ action, dispatch, state, updateState }) => {
-    console.log("%c " + " ✅  CHOICES_FETCH_SUCCESS", "font-weight:bold");
+  [STAGE_CHOICES_SUCCESS]: ({ action, dispatch, state, updateState }) => {
+    console.log("%c " + " ✅  STAGE_CHOICES_SUCCESS", "font-weight:bold");
     const result = action.payload.result;
 
     if (result) {
@@ -86,7 +77,7 @@ export default {
 
       const { table, sysId } = state.properties;
 
-      dispatch(RECORD_FETCH_REQUEST, {
+      dispatch(CURRENT_STAGE_REQUEST, {
         table: table,
         sysId: sysId,
         sysparm_fields: "number,short_description,stage",
@@ -97,15 +88,15 @@ export default {
     }
   },
 
-  [RECORD_FETCH_REQUEST]: getHttpEffect({
-    startActionType: DATA_REQUEST_START,
-    progressActionType: DATA_REQUEST_PROGRESS,
-    successActionType: RECORD_FETCH_SUCCESS,
-    errorActionType: RECORD_FETCH_FAILURE,
+  [CURRENT_STAGE_REQUEST]: getHttpEffect({
+    startActionType: DATA_FETCH_START,
+    progressActionType: DATA_FETCH_PROGRESS,
+    successActionType: CURRENT_STAGE_SUCCESS,
+    errorActionType: CURRENT_STAGE_FAILURE,
   }),
 
-  [RECORD_FETCH_SUCCESS]: ({ action, dispatch, updateState }) => {
-    console.log("%c " + " ✅  RECORD_FETCH_SUCCESS", "font-weight:bold");
+  [CURRENT_STAGE_SUCCESS]: ({ action, dispatch, updateState }) => {
+    console.log("%c " + " ✅  CURRENT_STAGE_SUCCESS", "font-weight:bold");
     const result = action.payload.result;
     console.log(" - record.stage = " + result.stage);
 
@@ -117,8 +108,8 @@ export default {
     }
   },
 
-  [CHOICES_FETCH_FAILURE]: ({ action, state, updateState }) => {
-    console.log("%c " + " ❌ CHOICES_FETCH_FAILURE", "font-weight:bold");
+  [STAGE_CHOICES_FAILURE]: ({ action, state, updateState }) => {
+    console.log("%c " + " ❌ STAGE_CHOICES_FAILURE", "font-weight:bold");
     console.log(" payload ", action.payload);
 
     const error = action.payload.data.error;
@@ -130,8 +121,8 @@ export default {
     updateState({ isLoading: false, hasError: true, errorMessage: errorMessage });
   },
 
-  [RECORD_FETCH_FAILURE]: ({ action, state, updateState }) => {
-    console.log("%c " + " ❌ RECORD_FETCH_FAILURE", "font-weight:bold");
+  [CURRENT_STAGE_FAILURE]: ({ action, state, updateState }) => {
+    console.log("%c " + " ❌ CURRENT_STAGE_FAILURE", "font-weight:bold");
     const payload = action.payload;
     const errorDetail = payload.data.error.detail;
     const { recordRequested } = state;
@@ -139,16 +130,16 @@ export default {
     updateState({ isLoading: false, hasError: true, errorMessage: errorMessage });
   },
 
-  [DATA_REQUEST_START]: ({ action, dispatch, updateState }) => {
+  [DATA_FETCH_START]: ({ action, dispatch, updateState }) => {
     const { meta } = action;
     const request = action.meta.request;
-    console.log("%c " + "  DATA_REQUEST_START: " + request.url, "font-weight:bold");
+    console.log("%c " + "  DATA_FETCH_START: " + request.url, "font-weight:bold");
     console.log("request = ", request);
   },
 
-  [DATA_REQUEST_PROGRESS]: ({ action, updateState }) => {
-    console.log("%c " + " ?? DATA_REQUEST_PROGRESS", "font-weight:bold");
+  [DATA_FETCH_PROGRESS]: ({ action, updateState }) => {
+    console.log("%c " + " ?? DATA_FETCH_PROGRESS", "font-weight:bold");
     const payload = action.payload;
-    console.log("DATA_REQUEST_PROGRESS", payload);
+    console.log("DATA_FETCH_PROGRESS", payload);
   },
 };
