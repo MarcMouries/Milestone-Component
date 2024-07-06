@@ -27,7 +27,6 @@ export default {
     updateState({ shouldRender: true });
   },
 
-
   [COMPONENT_BOOTSTRAPPED]: ({ dispatch, updateState, properties, state }) => {
     console.log("%c " + "Action COMPONENT_BOOTSTRAPPED: " + state.properties.mode, "font-weight:bold");
 
@@ -84,7 +83,7 @@ export default {
         sysparm_display_value: "true",
       });
     } else {
-      console.log("%c " + " ❌ CHOICES MISSING STAGE FIELD", "font-weight:bold");
+      console.log("%c " + " ❌ The fetched stage choices are missing the stage field.", "font-weight:bold");
     }
   },
 
@@ -103,8 +102,8 @@ export default {
     if (result.stage) {
       updateState({ currentStage: result.stage, isLoading: false });
     } else {
-      console.log("%c ❌ RECORD MISSING STAGE FIELD", "font-weight:bold");
-      updateState({ isLoading: false, hasError: true, errorMessage: "Record missing stage field." });
+      console.log("%c ❌ The fetched record is missing the stage field.", "font-weight:bold");
+      updateState({ isLoading: false, hasError: true, errorMessage: "The fetched record is missing the stage field. Please ensure the record contains a valid stage field." });
     }
   },
 
@@ -116,7 +115,7 @@ export default {
     console.log(" error ", error);
 
     const { recordRequested } = state;
-    const errorMessage = `Error: ${error.message} ${error.detail} for record with sysId: ${recordRequested.sysId} in table: ${recordRequested.table}.`;
+    const errorMessage = `Failed to fetch stage choices for table "${recordRequested.table}". Error: ${error.message}. Details: ${error.detail}. Record sysId: ${recordRequested.sysId}.`;
     console.log(" errorMessage ", errorMessage);
     updateState({ isLoading: false, hasError: true, errorMessage: errorMessage });
   },
@@ -126,7 +125,7 @@ export default {
     const payload = action.payload;
     const errorDetail = payload.data.error.detail;
     const { recordRequested } = state;
-    const errorMessage = `Error: ${errorDetail} for record with sysId: ${recordRequested.sysId} in table: ${recordRequested.table}.`;
+    const errorMessage = `Failed to fetch the record from table "${recordRequested.table}". Error Details: ${errorDetail}. Record sysId: ${recordRequested.sysId}.`;
     updateState({ isLoading: false, hasError: true, errorMessage: errorMessage });
   },
 
