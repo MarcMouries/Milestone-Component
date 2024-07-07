@@ -103,15 +103,27 @@ const baseConfigStatic = {
   el.appendChild(milestone);
 });
 
-// Example: Pointing to a record
-el.appendChild(createHeader('Mode = RECORD', 'record'));
-const configRecord = {
+// Example: Pointing to a valid record
+el.appendChild(createHeader('Mode = RECORD - Valid record', 'record'));
+const configValidRecord = {
   mode: "RECORD",
   table: 'x_snc_uib_examples_order',
   sysId: '9cab58f31b96b910b00dddf6b04bcb98'
 };
-const milestoneRecord = createMilestone(configRecord);
-el.appendChild(milestoneRecord);
+el.appendChild(createMilestone(configValidRecord));
+
+// Example: Pointing to a table without a stage
+el.appendChild(createHeader('Mode = RECORD - table without a stage field', 'record'));
+const configInvalidRecord = {
+  mode: "RECORD",
+  table: 'task',
+  sysId: '9cab58f31b96b910b00dddf6b04bcb98'
+};
+el.appendChild(createMilestone(configInvalidRecord));
+
+
+
+
 
 function createHeader(text, mode) {
   const header = document.createElement('div');
