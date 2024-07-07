@@ -1,9 +1,5 @@
 export default (state, { updateState, dispatch }) => {
   const { currentStage, stages, size, hasError, errorMessage, isLoading, mode } = state;
-  const stageStyle = {
-    fontSize: determineFontSize(size),
-    height: determineHeight(size),
-  };
   console.log("%c " + "VIEW (component " + state.componentId + " - " + state.properties.mode + ")", "font-weight:bold");
   console.log("state = ", state);
 
@@ -11,7 +7,7 @@ export default (state, { updateState, dispatch }) => {
     const errorMessages = ["Error Detected", "Configuration Issue", "Please Review Settings"];
     return errorMessages.map((message, index) => (
       <li key={`error-${index}`} className="stage error">
-        {message}
+        <a href="#">{message}</a>
       </li>
     ));
   };
@@ -19,33 +15,11 @@ export default (state, { updateState, dispatch }) => {
   const handleClickOnStage = (e, stage, dispatch) => {
     const fieldValue = e.target.innerText;
     console.log("handleClickOnStage: stage = " + stage);
-    
+
     dispatch(({ properties: { name } }) => {
       return { type: "MILESTONE#CLICK", payload: { name, stage } };
     });
   };
-
-  function determineFontSize(size) {
-    switch (size) {
-      case "small":
-        return "0.6rem";
-      case "large":
-        return "1rem";
-      default:
-        return "0.8rem"; // medium
-    }
-  }
-
-  function determineHeight(size) {
-    switch (size) {
-      case "small":
-        return "1.8em";
-      case "large":
-        return "2.5em";
-      default:
-        return "2em"; // medium
-    }
-  }
 
   const renderStages = () => {
     if (isLoading) {
@@ -56,37 +30,38 @@ export default (state, { updateState, dispatch }) => {
     }
     const currentStageIndex = stages.findIndex((stage) => stage === currentStage);
     return stages.map((stage, index) => (
-      <li key={`stage-${index}`} 
-          className={getClassName(index, currentStageIndex)} 
-          style={stageStyle} 
-          on-click={(e) => handleClickOnStage(e, stage, dispatch)}>
+      <li key={`stage-${index}`}
+        className={getClassName(index, currentStageIndex, size)}
+        on-click={(e) => handleClickOnStage(e, stage, dispatch)}>
         <a href="#">{stage}</a>
       </li>
     ));
   };
 
-
-
   return (
     <div className="container">
       <ul className="stage-tracker">{renderStages()}</ul>
-      {hasError && <div className="error-message">{errorMessage}</div>}
+      {hasError && (
+        <div className="error-message">
+          <span className="error-message-icon">⚠️</span>
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 
-  /**
-   * Helper function to determine the CSS class for a stage.
-   * Now accepts currentIndex as a parameter.
-   */
-  function getClassName(stageIndex, currentStageIndex) {
+  function getClassName(stageIndex, currentStageIndex, size) {
+    let className = "stage";
     if (stageIndex === currentStageIndex) {
-      return "stage current";
+      className += " current";
     } else if (stageIndex < currentStageIndex) {
-      return "stage complete";
+      className += " complete";
     }
-    return "stage";
+    className += ` ${size}`;
+    return className;
   }
 };
+
 
 /* VERSIONS WITH THE POP OVER
   return (
