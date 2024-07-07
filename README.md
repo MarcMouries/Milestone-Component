@@ -21,7 +21,7 @@ Choose from three sizes to ensure the component fits various layouts:
   - Set the `currentStage` property to indicate the active stage.
 
 - **Record Mode**:
-  - Ensure the specified table contains a field named `stage` of the type 'workflow', with a list of stages defined.
+  - Ensure the specified `table` contains a field named `stage` of the type 'workflow', with a list of stages defined.
   - The component fetches these stages and the current stage from the record automatically.
 
 These configuration options allow the Milestone Tracker to be versatile, fitting different scenarios within ServiceNow, adaptable to both static and dynamic workflows.
@@ -31,7 +31,6 @@ These configuration options allow the Milestone Tracker to be versatile, fitting
 
 ## Prerequisites
 1. Install Node version v16.
-    * https://nodejs.org/ru/blog/release/v16/
     * It's the version supported by the ServiceNow CLI
 
 2. Now CLI @26.5.0
