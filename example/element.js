@@ -1,5 +1,4 @@
 import '../src/x-snc-milestone';
-//import {DEFAULT_STAGE_LIST} from '../src/x-snc-milestone/sample_data';
 
 const DEFAULT_STAGE_LIST = ["Element 1", "Element 2", "Element 3"];
 const DEFAULT_CURRENT_STAGE = "Element 2";
@@ -11,27 +10,22 @@ const css = `
 
  .container {
     padding: 20px;
-    border: 2px solid #0078d7;  // You may want to adjust this if it doesn't fit the new color scheme
+    border: 2px solid #0078d7;
     border-radius: 8px;
     max-width: 800px;
-    margin: 20px auto;  // Centers the container
+    margin: 20px auto;
 }
 
-.paragraph {
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-}
+
 
 .header {
     padding: 8px;
     font-size: 18px;
     border-radius: 4px 4px 0 0;  
-    border-left: 2px solid;  
-    border-right: 2px solid;  
-    border-top: 2px solid; 
+    background-color: #C7C8CC;
+    border-color: #C7C8CC;
     color: #333;  
+    margin-bottom: 10px
 }
 
 .milestone-container {
@@ -40,7 +34,6 @@ const css = `
     border-radius: 0 0 4px 4px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-top: none;
     margin-bottom: 20px;
 }
 
@@ -59,7 +52,6 @@ const css = `
     background-color: #C7C8CC;
     border-color: #C7C8CC;
 }
-
 `;
 
 // Create a <style> element
@@ -75,7 +67,6 @@ document.head.appendChild(style);
 const el = document.createElement('div');
 document.body.appendChild(el);
 
-
 // Title
 const mainHeading = document.createElement('h1');
 mainHeading.textContent = "Milestone Tracker Test Page";
@@ -83,63 +74,54 @@ mainHeading.style.textAlign = 'center'; // Center the heading
 el.insertBefore(mainHeading, el.firstChild);
 
 // Default Mode (No properties set)
-el.appendChild(createHeader('Default Mode (No properties set)', 'default'));
-const milestoneDefault = createMilestone({});
-el.appendChild(milestoneDefault);
+el.appendChild(createMilestone({  }, 'Default Mode (No properties set)'));
 
-
+// Example: Milestones of different sizes
 const baseConfigStatic = {
   mode: "STATIC",
   stages: ["Submission", "Review", "Complete"],
   currentStage: "Review"
 };
 
-// Example: Milestones of different sizes
 ['small', 'medium', 'large'].forEach(size => {
-  el.appendChild(createHeader(`Mode = STATIC & Size = ${size}`, 'static'));
-
   const configStatic = { ...baseConfigStatic, size: size };  // Create a copy of the base config and set the size
-  const milestone = createMilestone(configStatic);
-  el.appendChild(milestone);
+  el.appendChild(createMilestone(configStatic, `Mode = STATIC & Size = ${size}`));
 });
 
 // Example: Pointing to a valid record
-el.appendChild(createHeader('Mode = RECORD - Valid record', 'record'));
 const configValidRecord = {
   mode: "RECORD",
   table: 'x_snc_uib_examples_order',
   sysId: '9cab58f31b96b910b00dddf6b04bcb98'
 };
-el.appendChild(createMilestone(configValidRecord));
+el.appendChild(createMilestone(configValidRecord, 'Mode = RECORD - Valid record'));
 
 // Example: Pointing to a table without a stage
-el.appendChild(createHeader('Mode = RECORD - table without a stage field', 'record'));
 const configInvalidRecord = {
   mode: "RECORD",
   table: 'task',
   sysId: '9cab58f31b96b910b00dddf6b04bcb98'
 };
-el.appendChild(createMilestone(configInvalidRecord));
-
-
-
-
+el.appendChild(createMilestone(configInvalidRecord, 'Mode = RECORD - table without a stage field'));
 
 function createHeader(text, mode) {
   const header = document.createElement('div');
   header.className = 'header';
   header.textContent = text;
   if (mode) {
-      header.classList.add('mode-' + mode.toLowerCase());
+    header.classList.add('mode-' + mode.toLowerCase());
   }
   return header;
 }
 
 // Helper function to create and configure the milestone component
-function createMilestone(config) {
-
+function createMilestone(config, headerText) {
   const container = document.createElement('div');
   container.className = 'milestone-container';
+
+  // Create and append the header element to the container
+  const header = createHeader(headerText, config.mode);
+  container.appendChild(header);
 
   // Create the milestone custom element
   const milestone = document.createElement('x-snc-milestone');
@@ -157,6 +139,7 @@ function createMilestone(config) {
   if (config.sysId) milestone.sysId = config.sysId;
   return container;
 }
+
 
 
 /*
