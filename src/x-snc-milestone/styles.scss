@@ -1,15 +1,31 @@
 @import "@servicenow/sass-kit/host";
 @import 'theme';
 
-:root {
-	--stage-font-size: 0.5rem; // default font size
-	--stage-tracker-height: 5em; // default height
-}
+// SCSS variable definitions
+$stage-font-size-small: 0.6rem;
+$stage-font-size-medium: 0.8rem;
+$stage-font-size-large: 1rem;
 
+$stage-height-small: 1.8em;
+$stage-height-medium: 2em;
+$stage-height-large: 2.5em;
+
+$stage-tracker-height: $stage-height-medium;
+
+:root {
+	--stage-font-size-small: #{$stage-font-size-small};
+	--stage-font-size-medium: #{$stage-font-size-medium};
+	--stage-font-size-large: #{$stage-font-size-large};
+
+	--stage-height-small: #{$stage-height-small};
+	--stage-height-medium: #{$stage-height-medium};
+	--stage-height-large: #{$stage-height-large};
+
+	--stage-tracker-height: #{$stage-tracker-height}; // default height
+}
 
 .stage-tracker {
 	width: 100%;
-	height: var(--stage-tracker-height);
 	background: $stage-tracker-background;
 	margin: 0;
 	counter-reset: step;
@@ -22,11 +38,10 @@
 }
 
 .pop-icon {
-    color: red;
+	color: red;
 }
 
 .stage {
-	//font-size: var(--stage-font-size);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -35,8 +50,8 @@
 	color: $stage-text-color;
 	font-family: inherit;
 	cursor: pointer;
-
-
+	font-size: var(--stage-font-size-medium, #{$stage-font-size-medium}); 
+	height: var(--stage-height-medium, #{$stage-height-medium});  
 
 	a {
 		text-decoration: none;
@@ -46,11 +61,22 @@
 		font-family: var(--now-font-family);
 		text-transform: uppercase;
 	}
-
 }
+
+.stage.small {
+	font-size: var(--stage-font-size-small, #{$stage-font-size-small});
+	height: var(--stage-height-small, #{$stage-height-small});
+}
+
+.stage.large {
+	font-size: var(--stage-font-size-large, #{$stage-font-size-large});
+	height: var(--stage-height-large, #{$stage-height-large});
+}
+
 .stage:not(:first-child) {
 	margin-left: -6px;
 }
+
 .stage:first-child {
 	clip-path: polygon(
 		0 0,
@@ -58,9 +84,10 @@
 		100% 50%,
 		calc(100% - 10px) 100%,
 		0 100%,
-		0px 50%
+		0 50%
 	);
 }
+
 .stage:not(:first-child):not(:last-child) {
 	clip-path: polygon(
 		0 0,
@@ -71,14 +98,21 @@
 		10px 50%
 	);
 }
+
 .stage:last-child {
-	clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 10px 50%, 0% 0%);
+	clip-path: polygon(
+		100% 0,
+		100% 50%,
+		100% 100%,
+		0 100%,
+		10px 50%,
+		0 0
+	);
 }
 
 .stage:hover {
 	text-decoration: none;
 }
-
 
 .stage.complete {
 	background: $stage-complete-color;
@@ -90,6 +124,7 @@
 	background: $stage-current-color;
 	color: #eee;
 }
+
 .stage:before {
 	font-weight: bolder;
 	margin-right: 5px;
@@ -98,14 +133,35 @@
 .stage.complete:before {
 	content: "✓";
 }
+
 .stage.current:before {
 	content: "☉";
 }
 
 .error {
 	border: solid 1px red;
-    margin: 5px;
-    padding: 10px;
-    background: lightcoral;
+	padding: 10px;
+	background: lightcoral;
 	color: white;
+	font-size: var(--stage-font-size-medium, #{$stage-font-size-medium});
+	height: var(--stage-height-medium, #{$stage-height-medium}); 
 }
+
+.error-message {
+	margin-top: 5px;
+	padding: 5px;
+	background-color:rgba(255, 0, 0, 0.1);
+	color: black; 
+	border: 1px solid #d32f2f; 
+	border-radius: 5px; 
+	font-size: 0.9rem; 
+	font-weight: normal; 
+	display: flex;
+	align-items: center;
+}
+
+.error-message-icon {
+	margin-right: 10px;
+	font-size: 1.2rem; 
+}
+
