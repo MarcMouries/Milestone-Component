@@ -39,9 +39,7 @@
 							"icon": "text-outline"
 						}
 					]
-				},
-				"scriptedConfigPolicy": "uib/milestone-properties-policy.js"
-
+				}
 			},
 			"properties": [
 				{
