@@ -1,8 +1,5 @@
 import '../src/x-snc-milestone';
 
-const DEFAULT_STAGE_LIST = ["Element 1", "Element 2", "Element 3"];
-const DEFAULT_CURRENT_STAGE = "Element 2";
-
 const css = `
     * {
         font-family: 'Arial', sans-serif; 
@@ -79,8 +76,14 @@ el.appendChild(createMilestone({  }, 'Default Mode (No properties set)'));
 // Example: Milestones of different sizes
 const baseConfigStatic = {
   mode: "STATIC",
+  // stages: [
+  //   { label: "Submission", value: "submission" },
+  //   { label: "Review", value: "review" },
+  //   { label: "Complete", value: "complete" }
+  // ],
   stages: ["Submission", "Review", "Complete"],
   currentStage: "Review"
+
 };
 
 ['small', 'medium', 'large'].forEach(size => {

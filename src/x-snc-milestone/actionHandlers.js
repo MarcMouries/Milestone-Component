@@ -71,8 +71,7 @@ export default {
 
     if (result) {
       console.log(result);
-      let labelsList = result.map((item) => item.label);
-      updateState({ stages: labelsList, shouldRender: false });
+      updateState({ stages: result, shouldRender: false });
 
       const { table, sysId } = state.properties;
 

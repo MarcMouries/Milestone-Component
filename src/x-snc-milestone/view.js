@@ -13,11 +13,9 @@ export default (state, { updateState, dispatch }) => {
   };
 
   const handleClickOnStage = (e, stage, dispatch) => {
-    const fieldValue = e.target.innerText;
-    console.log("handleClickOnStage: stage = " + stage);
-
+    console.log("handleClickOnStage: stage = ", stage);
     dispatch(({ properties: { name } }) => {
-      return { type: "MILESTONE#CLICK", payload: { name, stage } };
+      return { type: "MILESTONE#CLICK", payload: { name, stage: { label: stage.label || stage, value: stage.value || stage } } };
     });
   };
 
@@ -28,12 +26,14 @@ export default (state, { updateState, dispatch }) => {
     if (!stages || stages.length === 0) {
       return hasError ? renderErrorMessages() : <div className="error">No stages available.</div>;
     }
-    const currentStageIndex = stages.findIndex((stage) => stage === currentStage);
+    console.log("currentStage = ", currentStage);
+    const currentStageIndex = stages.findIndex((stage) => (stage.label || stage) === currentStage);
+    console.log("currentStageIndex = ", currentStageIndex);
     return stages.map((stage, index) => (
       <li key={`stage-${index}`}
         className={getClassName(index, currentStageIndex, size)}
         on-click={(e) => handleClickOnStage(e, stage, dispatch)}>
-        <a href="#">{stage}</a>
+        <a href="#">{stage.label || stage}</a>
       </li>
     ));
   };
