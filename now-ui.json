@@ -70,12 +70,7 @@
 					"fieldType": "json",
 					"readOnly": false,
 					"required": false,
-					"defaultValue": [
-						"Set",
-						"Your",
-						"Own",
-						"Stages"
-					],
+					"defaultValue": "[\"Set\", \"Your\", \"Own\", \"Stages\"]",
 					"typeMetadata": {
 						"schema": {
 							"type": "array",
