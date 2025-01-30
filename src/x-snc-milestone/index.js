@@ -9,8 +9,9 @@ import properties from './properties'
 import actionHandlers from './actionHandlers';
 import '../x-snc-milestone-details';
 
-const VERSION = '1.0.0';
-console.log(`%c  Milestone Tracker (v${VERSION})      `, 'background: #222; color: #62d84e; font-size: 12px; padding: 2px; border: 1px solid #62d84e;');
+const {name, version} = require('../../package.json');
+
+console.log(`%c  Milestone Tracker (v${version})      `, 'background: #222; color: #62d84e; font-size: 12px; padding: 2px; border: 1px solid #62d84e;');
 
 createCustomElement('x-snc-milestone', {
 	actionHandlers,
