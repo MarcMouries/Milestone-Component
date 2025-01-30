@@ -1,8 +1,5 @@
 export default (state, { updateState, dispatch }) => {
   const { currentStage, stages, size, hasError, errorMessage, isLoading, mode } = state;
-  console.log("%c " + "VIEW (component " + state.componentId + " - " + state.properties.mode + ")", "font-weight:bold");
-  console.log("state = ", state);
-
   const renderErrorMessages = () => {
     const errorMessages = ["Error Detected", "Configuration Issue", "Please Review Settings"];
     return errorMessages.map((message, index) => (
@@ -26,9 +23,7 @@ export default (state, { updateState, dispatch }) => {
     if (!stages || stages.length === 0) {
       return hasError ? renderErrorMessages() : <div className="error">No stages available.</div>;
     }
-    console.log("currentStage = ", currentStage);
     const currentStageIndex = stages.findIndex((stage) => (stage.label || stage) === currentStage);
-    console.log("currentStageIndex = ", currentStageIndex);
     return stages.map((stage, index) => (
       <li key={`stage-${index}`}
         className={getClassName(index, currentStageIndex, size)}

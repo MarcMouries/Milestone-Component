@@ -28,8 +28,6 @@ export default {
   },
 
   [COMPONENT_BOOTSTRAPPED]: ({ dispatch, updateState, properties, state }) => {
-    console.log("%c " + "Action COMPONENT_BOOTSTRAPPED: " + state.properties.mode, "font-weight:bold");
-
     if (properties.mode === MODE_STATIC) {
       // For MODE_STATIC, set isLoading to false and use properties for stages and currentStage
       // initialize the component's state with properties passed to the component.
@@ -66,11 +64,9 @@ export default {
   }),
 
   [STAGE_CHOICES_SUCCESS]: ({ action, dispatch, state, updateState }) => {
-    console.log("%c " + " ✅  STAGE_CHOICES_SUCCESS", "font-weight:bold");
     const result = action.payload.result;
 
     if (result) {
-      console.log(result);
       updateState({ stages: result, shouldRender: false });
 
       const { table, sysId } = state.properties;
@@ -129,10 +125,9 @@ export default {
   },
 
   [DATA_FETCH_START]: ({ action, dispatch, updateState }) => {
-    const { meta } = action;
     const request = action.meta.request;
-    console.log("%c " + "  DATA_FETCH_START: " + request.url, "font-weight:bold");
-    console.log("request = ", request);
+    //console.log("%c " + "  DATA_FETCH_START: " + request.url, "font-weight:bold");
+    //console.log("request = ", request);
   },
 
   [DATA_FETCH_PROGRESS]: ({ action, updateState }) => {
